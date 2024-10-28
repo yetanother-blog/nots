@@ -1,5 +1,8 @@
-name: 👀 Check changes
-on: pull_request
+name: 🚀 Deploy
+on:
+  push:
+    branches:
+      - main
 
 env:
   CI: 'true'
@@ -50,9 +53,17 @@ jobs:
       - name: Transpile TypeScript
         run: npm run typecheck
 
-  build:
+  deploy-remix:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs:
+      - unit-tests
+      - lint
+      - typecheck
+    env:
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_REMIX_PROJECT_ID }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,5 +73,9 @@ jobs:
           node-version: 20
       - name: Install deps
         uses: bahmutov/npm-install@v1
-      - name: Build Remix
-        run: npm run build
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
