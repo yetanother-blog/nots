@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:
-      name: app-preview-${{ github.event.pull_request.number }}
+      name: app-preview
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_APP_PROJECT_ID }}
@@ -82,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:
-      name: ui-preview-${{ github.event.pull_request.number }}
+      name: ui-preview
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_UI_PROJECT_ID }}
