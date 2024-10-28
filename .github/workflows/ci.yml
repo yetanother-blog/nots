@@ -50,9 +50,15 @@ jobs:
       - name: Transpile TypeScript
         run: npm run typecheck
 
-  build:
+  preview-app:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    environment:
+      name: app-preview-${{ github.event.pull_request.number }}
+      url: ${{ steps.get-url.outputs.PREVIEW_URL }}
+    env:
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_APP_PROJECT_ID }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,5 +68,40 @@ jobs:
           node-version: 20
       - name: Install deps
         uses: bahmutov/npm-install@v1
-      - name: Build Remix
-        run: npm run build
+      - name: Pull Vercel Environment Information
+        run: npx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: npx vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: npx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > deployment-url.txt
+      - name: Get URL
+        id: get-url
+        run: echo "PREVIEW_URL=$(cat deployment-url.txt)" >> "$GITHUB_OUTPUT"
+  
+  preview-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: ui-preview-${{ github.event.pull_request.number }}
+      url: ${{ steps.get-url.outputs.PREVIEW_URL }}
+    env:
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_UI_PROJECT_ID }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Pull Vercel Environment Information
+        run: npx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: npx vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: npx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > deployment-url.txt
+      - name: Get URL
+        id: get-url
+        run: echo "PREVIEW_URL=$(cat deployment-url.txt)" >> "$GITHUB_OUTPUT"
