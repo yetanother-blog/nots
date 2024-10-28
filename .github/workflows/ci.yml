@@ -1,0 +1,82 @@
+name: 👀 Check changes
+on: pull_request
+
+env:
+  CI: 'true'
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Run unit tests
+        run: npm test
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Lint code
+        run: npm run lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Transpile TypeScript
+        run: npm run typecheck
+
+  remix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Build Remix
+        run: npm run build
+
+  storybook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency: deploy-storybook-pr-${{ github.event.pull_request.number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Build Storybook
+        run: npm run storybook-build
