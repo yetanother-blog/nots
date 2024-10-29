@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels:
+      - "🚀 merge it!"
+    groups:
+      dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
