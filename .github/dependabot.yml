@@ -6,6 +6,9 @@ updates:
       interval: weekly
     labels:
       - "🚀 merge it!"
+    ignore:
+      - dependency-name: eslint
+        versions: ["9.x"]
     groups:
       dependencies:
         applies-to: version-updates
