@@ -57,7 +57,7 @@ jobs:
       name: app-preview
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_APP_PROJECT_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
@@ -85,7 +85,7 @@ jobs:
       name: ui-preview
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_UI_PROJECT_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout

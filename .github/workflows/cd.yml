@@ -53,7 +53,7 @@ jobs:
       - name: Transpile TypeScript
         run: npm run typecheck
 
-  deploy-app-prod:
+  deploy-app-staging:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs:
@@ -61,10 +61,37 @@ jobs:
       - lint
       - typecheck
     environment:
+      name: app-staging
+      url: https://nots-app-staging.vercel.app/
+    env:
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Pull Vercel Environment Information
+        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+  deploy-app-prod:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs:
+      - deploy-app-staging
+    environment:
       name: app-prod
       url: https://nots-app-prod.vercel.app/
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_APP_PROJECT_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
@@ -86,14 +113,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs:
-      - unit-tests
-      - lint
-      - typecheck
+      - deploy-app-staging
     environment:
       name: ui-prod
       url: https://nots-ui-prod.vercel.app/
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_UI_PROJECT_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
