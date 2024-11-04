@@ -59,6 +59,8 @@ jobs:
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    outputs:
+      url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -101,3 +103,40 @@ jobs:
       - name: Get URL
         id: get-url
         run: echo "PREVIEW_URL=$(cat deployment-url.txt)" >> "$GITHUB_OUTPUT"
+  
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: 
+      - preview-app
+    env:
+      BASE_URL: ${{ needs.preview-app.outputs.url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(npx playwright --version)" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - name: Run e2e tests
+        run: npm run e2e:ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
