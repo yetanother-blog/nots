@@ -64,7 +64,7 @@ jobs:
       name: app-staging
       url: https://nots-app-staging.vercel.app/
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: prj_nzUbjHfP9cjzv8vuRW7Dk8TFs96H
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
@@ -126,7 +126,7 @@ jobs:
       name: app-prod
       url: https://nots-app-prod.vercel.app/
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: prj_SMgFWjvg4SDAi7Psqyo3714TduWr
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
@@ -151,7 +151,7 @@ jobs:
       name: ui-prod
       url: https://nots-ui-prod.vercel.app/
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: prj_vWrVx8MlF0c4pcEy8deBRnitPTKK
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
