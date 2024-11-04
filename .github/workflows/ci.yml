@@ -57,7 +57,7 @@ jobs:
       name: app-preview
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: prj_SMgFWjvg4SDAi7Psqyo3714TduWr
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     outputs:
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
@@ -85,7 +85,7 @@ jobs:
       name: ui-preview
       url: ${{ steps.get-url.outputs.PREVIEW_URL }}
     env:
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: prj_vWrVx8MlF0c4pcEy8deBRnitPTKK
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     steps:
       - name: Checkout
