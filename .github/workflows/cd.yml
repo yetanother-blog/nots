@@ -80,11 +80,48 @@ jobs:
       - name: Deploy to Vercel
         run: npx vercel deploy --prebuilt --local-config vercel-app.json --yes --prod --token=${{ secrets.VERCEL_TOKEN }}
 
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: 
+      - deploy-app-staging
+    env:
+      BASE_URL: https://nots-app-staging.vercel.app/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        uses: bahmutov/npm-install@v1
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(npx playwright --version)" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - name: Run e2e tests
+        run: npm run e2e:ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
+
   deploy-app-prod:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs:
-      - deploy-app-staging
+      - e2e
     environment:
       name: app-prod
       url: https://nots-app-prod.vercel.app/
@@ -109,7 +146,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs:
-      - deploy-app-staging
+      - e2e
     environment:
       name: ui-prod
       url: https://nots-ui-prod.vercel.app/
