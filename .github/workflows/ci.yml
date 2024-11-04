@@ -68,8 +68,10 @@ jobs:
           node-version: 20
       - name: Install deps
         uses: bahmutov/npm-install@v1
+      - name: Build app
+        run: npx vercel build --yes --local-config vercel-ui.json --token ${{ secrets.VERCEL_TOKEN }}
       - name: Deploy to Vercel
-        run: npx vercel deploy --local-config vercel-app.json --yes --token ${{ secrets.VERCEL_TOKEN }}  > deployment-url.txt
+        run: npx vercel deploy --prebuilt --local-config vercel-app.json --yes --token ${{ secrets.VERCEL_TOKEN }}  > deployment-url.txt
       - name: Get URL
         id: get-url
         run: echo "PREVIEW_URL=$(cat deployment-url.txt)" >> "$GITHUB_OUTPUT"
@@ -92,8 +94,10 @@ jobs:
           node-version: 20
       - name: Install deps
         uses: bahmutov/npm-install@v1
+      - name: Build UI
+        run: npx vercel build --yes --local-config vercel-ui.json --token ${{ secrets.VERCEL_TOKEN }}
       - name: Deploy to Vercel
-        run: npx vercel deploy --yes --local-config vercel-ui.json --token ${{ secrets.VERCEL_TOKEN }} > deployment-url.txt
+        run: npx vercel deploy --prebuilt --yes --local-config vercel-ui.json --token ${{ secrets.VERCEL_TOKEN }} > deployment-url.txt
       - name: Get URL
         id: get-url
         run: echo "PREVIEW_URL=$(cat deployment-url.txt)" >> "$GITHUB_OUTPUT"
