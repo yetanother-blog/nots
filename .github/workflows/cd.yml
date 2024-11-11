@@ -79,14 +79,14 @@ jobs:
       - name: Build app
         run: npx vercel build --yes --local-config vercel-app.json --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Migrate database
-        run: npx drizzle-kit push
+        run: npx drizzle-kit migrate
       - name: Deploy to Vercel
         run: npx vercel deploy --prebuilt --local-config vercel-app.json --yes --prod --token=${{ secrets.VERCEL_TOKEN }}
 
   e2e:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    needs: 
+    needs:
       - deploy-app-staging
     env:
       BASE_URL: https://nots-app-staging.vercel.app/
@@ -144,10 +144,10 @@ jobs:
       - name: Build app
         run: npx vercel build --yes --local-config vercel-app.json --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Migrate database
-        run: npx drizzle-kit push
+        run: npx drizzle-kit migrate
       - name: Deploy to Vercel
         run: npx vercel deploy --yes --local-config vercel-app.json --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-  
+
   deploy-ui-prod:
     runs-on: ubuntu-latest
     timeout-minutes: 10

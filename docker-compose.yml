@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  postgres:
+  db-dev:
     image: postgres:latest
     restart: always
     environment:
@@ -10,3 +10,18 @@ services:
       - POSTGRES_DB=nots
     ports:
       - "9876:5432"
+    volumes:
+      - app-volume:/var/lib/postgresql/data
+
+  db-test:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=nots
+    ports:
+      - "9877:5432"
+
+volumes:
+  app-volume: #
