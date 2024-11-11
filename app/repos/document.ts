@@ -22,16 +22,23 @@ export async function getDocument(id: string): Promise<Document | null> {
 
   const document = await db.query.documentsTable.findFirst({
     where: eq(documentsTable.id, id),
-  })
+  });
 
   return document ?? null;
 }
 
-export async function updateDocument(id: string, content: string): Promise<Document> {
-  const response = await db.update(documentsTable).set({
-    content,
-    updatedAt: new Date(),
-  }).where(eq(documentsTable.id, id)).returning();
+export async function updateDocument(
+  id: string,
+  content: string
+): Promise<Document> {
+  const response = await db
+    .update(documentsTable)
+    .set({
+      content,
+      updatedAt: new Date(),
+    })
+    .where(eq(documentsTable.id, id))
+    .returning();
 
   return response[0];
 }

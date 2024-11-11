@@ -42,10 +42,7 @@ describe('getDocument', () => {
 describe('updateDocument', () => {
   it('updates the document', async () => {
     const content = 'new content';
-    const document = await db
-      .insert(documentsTable)
-      .values({})
-      .returning();
+    const document = await db.insert(documentsTable).values({}).returning();
 
     await updateDocument(document[0].id, content);
 
