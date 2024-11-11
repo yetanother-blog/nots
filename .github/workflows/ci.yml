@@ -97,6 +97,7 @@ jobs:
     timeout-minutes: 10
     env:
       WITH_WEB_SERVER: true
+      DATABASE_URL: postgres://postgres:postgres@localhost:9876/nots
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -106,6 +107,8 @@ jobs:
           node-version: 20
       - name: Install deps
         uses: bahmutov/npm-install@v1
+      - name: Start docker compose
+        run: npm run docker:up
       - name: Get installed Playwright version
         id: playwright-version
         run: echo "PLAYWRIGHT_VERSION=$(npx playwright --version)" >> $GITHUB_ENV
@@ -119,6 +122,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
         if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - name: Setup database
+        run: npx drizzle-kit push
       - name: Run e2e tests
         run: npm run e2e:ci
       - uses: actions/upload-artifact@v4

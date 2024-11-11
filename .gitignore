@@ -4,6 +4,7 @@ node_modules
 /build
 .env
 .vercel
+.tmp
 
 *storybook.log
 storybook-static

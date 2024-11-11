@@ -5,6 +5,6 @@
   "devCommand": "npm run storybook",
   "outputDirectory": "storybook-static",
   "regions": [
-    "dub1"
+    "fra1"
   ]
 }

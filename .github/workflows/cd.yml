@@ -66,6 +66,7 @@ jobs:
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -77,6 +78,8 @@ jobs:
         uses: bahmutov/npm-install@v1
       - name: Build app
         run: npx vercel build --yes --local-config vercel-app.json --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Migrate database
+        run: npx drizzle-kit push
       - name: Deploy to Vercel
         run: npx vercel deploy --prebuilt --local-config vercel-app.json --yes --prod --token=${{ secrets.VERCEL_TOKEN }}
 
@@ -128,6 +131,7 @@ jobs:
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -139,6 +143,8 @@ jobs:
         uses: bahmutov/npm-install@v1
       - name: Build app
         run: npx vercel build --yes --local-config vercel-app.json --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Migrate database
+        run: npx drizzle-kit push
       - name: Deploy to Vercel
         run: npx vercel deploy --yes --local-config vercel-app.json --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
   
