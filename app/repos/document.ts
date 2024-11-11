@@ -1,10 +1,11 @@
 import { eq } from "drizzle-orm";
+import { validate as isValidUuid } from "uuid";
 import { db } from "~/db";
 import { documentsTable } from "~/db/schema";
 
 export interface Document {
   id: string;
-  content: string | null;
+  content: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -14,10 +15,12 @@ export async function createDocument(): Promise<Document> {
   return response[0];
 }
 
-export async function getDocument(id: string): Promise<Document | undefined> {
-  const response = await db.query.documentsTable.findFirst({
-    where: eq(documentsTable.id, id),
-  })
+export async function getDocument(id: string): Promise<Document | null> {
+  if (!isValidUuid(id)) {
+    return null;
+  }
 
-  return response;
+  return await db.query.documentsTable.findFirst({
+    where: eq(documentsTable.id, id),
+  }) ?? null;
 }
