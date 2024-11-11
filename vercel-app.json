@@ -5,6 +5,6 @@
   "devCommand": "npm run dev",
   "outputDirectory": "public",
   "regions": [
-    "dub1"
+    "fra1"
   ]
 }
