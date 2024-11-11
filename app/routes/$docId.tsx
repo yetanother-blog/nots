@@ -3,22 +3,22 @@ import {
   redirect,
   type LoaderFunctionArgs,
   type MetaFunction,
-} from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import invariant from "tiny-invariant";
-import { getDocument } from "~/repos/document";
+} from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import invariant from 'tiny-invariant';
+import { getDocument } from '~/repos/document';
 
 export const meta: MetaFunction = () => {
-  return [{ title: "Document" }];
+  return [{ title: 'Document' }];
 };
 
 export async function loader({ params: { docId } }: LoaderFunctionArgs) {
-  invariant(docId, "Document ID is required");
+  invariant(docId, 'Document ID is required');
 
   const document = await getDocument(docId);
 
   if (!document) {
-    return redirect("/");
+    return redirect('/');
   }
 
   return json({ document });
