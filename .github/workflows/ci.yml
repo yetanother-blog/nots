@@ -15,6 +15,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Start docker compose
+        run: npm run docker:up
       - name: Install deps
         uses: bahmutov/npm-install@v1
       - name: Run unit tests
@@ -34,7 +36,7 @@ jobs:
         uses: bahmutov/npm-install@v1
       - name: Lint code
         run: npm run lint
-  
+
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -64,7 +66,7 @@ jobs:
         uses: bahmutov/npm-install@v1
       - name: Transpile TypeScript
         run: npm run typecheck
-  
+
   preview-ui:
     if: github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
@@ -91,7 +93,7 @@ jobs:
       - name: Get URL
         id: get-url
         run: echo "PREVIEW_URL=$(cat deployment-url.txt)" >> "$GITHUB_OUTPUT"
-  
+
   e2e:
     runs-on: ubuntu-latest
     timeout-minutes: 10
