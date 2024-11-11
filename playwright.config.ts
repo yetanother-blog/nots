@@ -20,11 +20,11 @@ export default defineConfig({
   ],
   webServer: process.env.WITH_WEB_SERVER
     ? {
-      command: 'npm run dev',
-      url: 'http://localhost:5173',
-      reuseExistingServer: !process.env.CI,
-      stdout: 'pipe',
-      stderr: 'pipe',
-    }
+        command: 'npm run dev',
+        url: 'http://localhost:5173',
+        reuseExistingServer: !process.env.CI,
+        stdout: 'pipe',
+        stderr: 'pipe',
+      }
     : undefined,
 });

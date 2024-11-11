@@ -1,7 +1,7 @@
-import { eq } from "drizzle-orm";
-import { validate as isValidUuid } from "uuid";
-import { db } from "~/db";
-import { documentsTable } from "~/db/schema";
+import { eq } from 'drizzle-orm';
+import { validate as isValidUuid } from 'uuid';
+import { db } from '~/db';
+import { documentsTable } from '~/db/schema';
 
 export interface Document {
   id: string;
@@ -20,7 +20,9 @@ export async function getDocument(id: string): Promise<Document | null> {
     return null;
   }
 
-  return await db.query.documentsTable.findFirst({
-    where: eq(documentsTable.id, id),
-  }) ?? null;
+  return (
+    (await db.query.documentsTable.findFirst({
+      where: eq(documentsTable.id, id),
+    })) ?? null
+  );
 }
