@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Start docker compose
+        run: npm run docker:up
       - name: Install deps
         uses: bahmutov/npm-install@v1
       - name: Run unit tests
