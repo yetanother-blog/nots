@@ -47,13 +47,7 @@ describe('updateDocument', () => {
       .values({})
       .returning();
 
-
-
-      await updateDocument({
-      ...document[0],
-      content,
-    });
-
+    await updateDocument(document[0].id, content);
 
     const updatedDocument = await db.query.documentsTable.findFirst({
       where: eq(documentsTable.id, document[0].id),

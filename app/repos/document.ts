@@ -27,9 +27,9 @@ export async function getDocument(id: string): Promise<Document | null> {
   return document ?? null;
 }
 
-export async function updateDocument({ id, ...rest }: Document): Promise<Document> {
+export async function updateDocument(id: string, content: string): Promise<Document> {
   const response = await db.update(documentsTable).set({
-    ...rest,
+    content,
     updatedAt: new Date(),
   }).where(eq(documentsTable.id, id)).returning();
 
