@@ -136,6 +136,48 @@ describe('toContentJson', () => {
 
     expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
   });
+
+  it('serializes paragraph w/ various inline elements', () => {
+    const html = document.createElement('div');
+    html.innerHTML = `<p>this is <strong><i><u>everything</u></i>, but this is just bold.</strong></p>`;
+
+    const expectedContent: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          { type: 'text', value: 'this is ' },
+          {
+            type: 'text',
+            value: 'everything',
+            bold: true,
+            italic: true,
+            underline: true,
+          },
+          {
+            type: 'text',
+            value: ', but this is just bold.',
+            bold: true,
+          },
+        ],
+      },
+    ];
+
+    expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
+  });
+
+  it('serializes paragraph w/ span element', () => {
+    const html = document.createElement('div');
+    html.innerHTML = `<p><span>hello world</span></p>`;
+
+    const expectedContent: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [{ type: 'text', value: 'hello world' }],
+      },
+    ];
+
+    expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
+  });
 });
 
 describe('toHtml', () => {
@@ -200,6 +242,82 @@ describe('toHtml', () => {
     ];
 
     const expectedHtml = `<p><br></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ bold text', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [{ type: 'text', value: 'Hello, world!', bold: true }],
+      },
+    ];
+
+    const expectedHtml = `<p><strong>Hello, world!</strong></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ italic text', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [{ type: 'text', value: 'Hello, world!', italic: true }],
+      },
+    ];
+
+    const expectedHtml = `<p><i>Hello, world!</i></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ underline text', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [{ type: 'text', value: 'Hello, world!', underline: true }],
+      },
+    ];
+
+    const expectedHtml = `<p><u>Hello, world!</u></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ bold, italic, and underline text', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'heading1',
+        nodes: [
+          {
+            type: 'text',
+            value: 'Headline',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        nodes: [
+          {
+            type: 'text',
+            value: 'This is everything',
+            bold: true,
+            italic: true,
+            underline: true,
+          },
+          {
+            type: 'text',
+            value: ', but this is just bold.',
+            bold: true,
+          },
+        ],
+      },
+    ];
+
+    const expectedHtml = `<p><strong><i><u>This is everything</u></i>, but this is just bold.</strong></p>`;
+
+    console.log(toHtml(content));
 
     expect(toHtml(content)).toBe(expectedHtml);
   });

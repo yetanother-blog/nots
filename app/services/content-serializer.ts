@@ -10,70 +10,70 @@ export function toContentJson(nodes: NodeListOf<ChildNode>): ContentBlock[] {
       if (isHeading1(node)) {
         return {
           type: 'heading1',
-          nodes: toContentInlineJson(node.childNodes),
+          nodes: toContentInlineJson(node),
         };
       }
 
       if (isHeading2(node)) {
         return {
           type: 'heading2',
-          nodes: toContentInlineJson(node.childNodes),
+          nodes: toContentInlineJson(node),
         };
       }
 
       if (isHeading3(node)) {
         return {
           type: 'heading3',
-          nodes: toContentInlineJson(node.childNodes),
+          nodes: toContentInlineJson(node),
         };
       }
 
       if (isParagraph(node)) {
         return {
           type: 'paragraph',
-          nodes: toContentInlineJson(node.childNodes),
+          nodes: toContentInlineJson(node),
         };
       }
     })
     .filter((block): block is ContentBlock => !!block);
 }
 
-export function toContentInlineJson(
-  nodes: NodeListOf<ChildNode>
-): ContentInline[] {
-  return Array.from(nodes)
+export function toContentInlineJson(parentNode: HTMLElement): ContentInline[] {
+  return Array.from(parentNode.childNodes)
     .map((node) => {
-      if (isText(node)) {
-        return {
-          type: 'text',
-          value: node.textContent ?? '',
-        } satisfies ContentInlineText;
+      if (
+        isStrong(node) ||
+        isItalic(node) ||
+        isUnderline(node) ||
+        isSpan(node)
+      ) {
+        return toContentInlineJson(node);
       }
 
-      if (isStrong(node)) {
-        return {
-          type: 'text',
-          value: node.textContent ?? '',
-          bold: true,
-        } satisfies ContentInlineText;
+      if (!isText(node)) {
+        return;
       }
 
-      if (isItalic(node)) {
-        return {
-          type: 'text',
-          value: node.textContent ?? '',
-          italic: true,
-        } satisfies ContentInlineText;
+      const text: ContentInlineText = {
+        type: 'text',
+        value: node.textContent ?? '',
+      };
+
+      if (hasRecursiveParentStrong(node.parentElement)) {
+        text.bold = true;
       }
 
-      if (isUnderline(node)) {
-        return {
-          type: 'text',
-          value: node.textContent ?? '',
-          underline: true,
-        } satisfies ContentInlineText;
+      if (hasRecursiveParentItalic(node.parentElement)) {
+        text.italic = true;
       }
+
+      if (hasRecursiveParentUnderline(node.parentElement)) {
+        text.underline = true;
+      }
+
+      return text;
     })
+    .flat()
     .filter((element) => !!element);
 }
 
@@ -117,10 +117,44 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
     return div.childNodes;
   }
 
+  let currentElement: Node = div;
   for (const element of elements) {
     if (element.type === 'text') {
+      if (element.bold && !hasRecursiveParentStrong(currentElement)) {
+        const strong = document.createElement('strong');
+        currentElement.appendChild(strong);
+        currentElement = strong;
+      }
+
+      if (!element.bold) {
+        currentElement =
+          findRecursiveParentStrong(currentElement) ?? currentElement;
+      }
+
+      if (element.italic && !hasRecursiveParentItalic(currentElement)) {
+        const italic = document.createElement('i');
+        currentElement.appendChild(italic);
+        currentElement = italic;
+      }
+
+      if (!element.italic) {
+        currentElement =
+          findRecursiveParentItalic(currentElement) ?? currentElement;
+      }
+
+      if (!element.underline) {
+        currentElement =
+          findRecursiveParentUnderline(currentElement) ?? currentElement;
+      }
+
+      if (element.underline && !hasRecursiveParentUnderline(currentElement)) {
+        const underline = document.createElement('u');
+        currentElement.appendChild(underline);
+        currentElement = underline;
+      }
+
       const text = document.createTextNode(element.value);
-      div.appendChild(text);
+      currentElement.appendChild(text);
     }
   }
 
@@ -147,6 +181,10 @@ function isText(node: Node): node is Text {
   return node.nodeType === node.TEXT_NODE;
 }
 
+function isSpan(node: Node): node is HTMLSpanElement {
+  return node instanceof HTMLSpanElement;
+}
+
 function isStrong(node: Node): node is HTMLElement {
   return node instanceof HTMLElement && node.tagName === 'STRONG';
 }
@@ -157,4 +195,76 @@ function isItalic(node: Node): node is HTMLElement {
 
 function isUnderline(node: Node): node is HTMLElement {
   return node instanceof HTMLElement && node.tagName === 'U';
+}
+
+function hasRecursiveParentStrong(node: Node | null): boolean {
+  if (!node) {
+    return false;
+  }
+
+  if (isStrong(node)) {
+    return true;
+  }
+
+  return hasRecursiveParentStrong(node.parentElement);
+}
+
+function findRecursiveParentStrong(node: Node | null): Node | null {
+  if (!node) {
+    return null;
+  }
+
+  if (isStrong(node)) {
+    return node;
+  }
+
+  return findRecursiveParentStrong(node.parentElement);
+}
+
+function findRecursiveParentItalic(node: Node | null): Node | null {
+  if (!node) {
+    return null;
+  }
+
+  if (isItalic(node)) {
+    return node;
+  }
+
+  return findRecursiveParentStrong(node.parentElement);
+}
+
+function findRecursiveParentUnderline(node: Node | null): Node | null {
+  if (!node) {
+    return null;
+  }
+
+  if (isUnderline(node)) {
+    return node;
+  }
+
+  return findRecursiveParentStrong(node.parentElement);
+}
+
+function hasRecursiveParentItalic(node: Node | null): boolean {
+  if (!node) {
+    return false;
+  }
+
+  if (isItalic(node)) {
+    return true;
+  }
+
+  return hasRecursiveParentStrong(node.parentElement);
+}
+
+function hasRecursiveParentUnderline(node: Node | null): boolean {
+  if (!node) {
+    return false;
+  }
+
+  if (isUnderline(node)) {
+    return true;
+  }
+
+  return hasRecursiveParentUnderline(node.parentElement);
 }
