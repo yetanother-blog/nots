@@ -18,16 +18,12 @@ export interface ContentBlockParagraph {
   nodes: ContentInline[];
 }
 
-export interface ContentInlineLineBreak {
-  type: 'line-break';
-}
-
 export interface ContentInlineText {
   type: 'text';
   value: string;
 }
 
-export type ContentInline = ContentInlineLineBreak | ContentInlineText;
+export type ContentInline = ContentInlineText;
 
 export type ContentBlock =
   | ContentBlockHeading1

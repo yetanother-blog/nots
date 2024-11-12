@@ -39,10 +39,6 @@ export function toContentInlineJson(
 ): ContentInline[] {
   return Array.from(nodes)
     .map((node) => {
-      if (isLineBreak(node)) {
-        return { type: 'line-break' };
-      }
-
       if (isText(node)) {
         return { type: 'text', value: node.textContent ?? '' };
       }
@@ -85,12 +81,12 @@ export function toHtml(content: ContentBlock[]): string {
 export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
   const div = document.createElement('div');
 
-  for (const element of elements) {
-    if (element.type === 'line-break') {
-      const br = document.createElement('br');
-      div.appendChild(br);
-    }
+  if (elements.length === 0) {
+    div.innerHTML = '<br>';
+    return div.childNodes;
+  }
 
+  for (const element of elements) {
     if (element.type === 'text') {
       const text = document.createTextNode(element.value);
       div.appendChild(text);
@@ -114,10 +110,6 @@ function isHeading3(node: Node): node is HTMLHeadingElement {
 
 function isParagraph(node: Node): node is HTMLParagraphElement {
   return node instanceof HTMLParagraphElement;
-}
-
-function isLineBreak(node: Node): node is HTMLBRElement {
-  return node instanceof HTMLBRElement;
 }
 
 function isText(node: Node): node is Text {

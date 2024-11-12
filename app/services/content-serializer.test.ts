@@ -74,12 +74,12 @@ describe('toContentJson', () => {
 
   it('serializes paragraph w/ line break', () => {
     const html = document.createElement('div');
-    html.innerHTML = `<p><br /></p>`;
+    html.innerHTML = `<p><br></p>`;
 
     const expectedContent: ContentBlock[] = [
       {
         type: 'paragraph',
-        nodes: [{ type: 'line-break' }],
+        nodes: [],
       },
     ];
 
@@ -145,19 +145,6 @@ describe('toHtml', () => {
       {
         type: 'paragraph',
         nodes: [],
-      },
-    ];
-
-    const expectedHtml = `<p></p>`;
-
-    expect(toHtml(content)).toBe(expectedHtml);
-  });
-
-  it('serializes paragraph w/ line break', () => {
-    const content: ContentBlock[] = [
-      {
-        type: 'paragraph',
-        nodes: [{ type: 'line-break' }],
       },
     ];
 
