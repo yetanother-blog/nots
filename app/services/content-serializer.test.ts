@@ -85,6 +85,57 @@ describe('toContentJson', () => {
 
     expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
   });
+
+  it('serializes paragraph w/ bold text', () => {
+    const html = document.createElement('div');
+    html.innerHTML = `<p>this is <strong>bold</strong></p>`;
+
+    const expectedContent: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          { type: 'text', value: 'this is ' },
+          { type: 'text', value: 'bold', bold: true },
+        ],
+      },
+    ];
+
+    expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
+  });
+
+  it('serializes paragraph w/ italic text', () => {
+    const html = document.createElement('div');
+    html.innerHTML = `<p>this is <i>italic</i></p>`;
+
+    const expectedContent: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          { type: 'text', value: 'this is ' },
+          { type: 'text', value: 'italic', italic: true },
+        ],
+      },
+    ];
+
+    expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
+  });
+
+  it('serializes paragraph w/ underline text', () => {
+    const html = document.createElement('div');
+    html.innerHTML = `<p>this is <u>underline</u></p>`;
+
+    const expectedContent: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          { type: 'text', value: 'this is ' },
+          { type: 'text', value: 'underline', underline: true },
+        ],
+      },
+    ];
+
+    expect(toContentJson(html.childNodes)).toStrictEqual(expectedContent);
+  });
 });
 
 describe('toHtml', () => {

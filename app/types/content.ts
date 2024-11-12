@@ -21,6 +21,9 @@ export interface ContentBlockParagraph {
 export interface ContentInlineText {
   type: 'text';
   value: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
 }
 
 export type ContentInline = ContentInlineText;

@@ -1,4 +1,8 @@
-import { ContentBlock, ContentInline } from '~/types/content';
+import {
+  ContentBlock,
+  ContentInline,
+  ContentInlineText,
+} from '~/types/content';
 
 export function toContentJson(nodes: NodeListOf<ChildNode>): ContentBlock[] {
   return Array.from(nodes)
@@ -40,10 +44,37 @@ export function toContentInlineJson(
   return Array.from(nodes)
     .map((node) => {
       if (isText(node)) {
-        return { type: 'text', value: node.textContent ?? '' };
+        return {
+          type: 'text',
+          value: node.textContent ?? '',
+        } satisfies ContentInlineText;
+      }
+
+      if (isStrong(node)) {
+        return {
+          type: 'text',
+          value: node.textContent ?? '',
+          bold: true,
+        } satisfies ContentInlineText;
+      }
+
+      if (isItalic(node)) {
+        return {
+          type: 'text',
+          value: node.textContent ?? '',
+          italic: true,
+        } satisfies ContentInlineText;
+      }
+
+      if (isUnderline(node)) {
+        return {
+          type: 'text',
+          value: node.textContent ?? '',
+          underline: true,
+        } satisfies ContentInlineText;
       }
     })
-    .filter((element): element is ContentInline => !!element);
+    .filter((element) => !!element);
 }
 
 export function toHtml(content: ContentBlock[]): string {
@@ -114,4 +145,16 @@ function isParagraph(node: Node): node is HTMLParagraphElement {
 
 function isText(node: Node): node is Text {
   return node.nodeType === node.TEXT_NODE;
+}
+
+function isStrong(node: Node): node is HTMLElement {
+  return node instanceof HTMLElement && node.tagName === 'STRONG';
+}
+
+function isItalic(node: Node): node is HTMLElement {
+  return node instanceof HTMLElement && node.tagName === 'I';
+}
+
+function isUnderline(node: Node): node is HTMLElement {
+  return node instanceof HTMLElement && node.tagName === 'U';
 }
