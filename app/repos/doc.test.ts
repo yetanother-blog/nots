@@ -3,7 +3,7 @@ import { createDoc, getDoc, updateDoc } from './doc';
 import { docsTable } from '~/db/schema';
 import { db } from '~/db';
 import { v4 as uuid } from 'uuid';
-import { Content } from '~/types/content';
+import { ContentBlock } from '~/types/content';
 
 describe('createDoc', () => {
   it('creates a doc', async () => {
@@ -39,13 +39,13 @@ describe('getDoc', () => {
 
 describe('updateDoc', () => {
   it('updates the doc', async () => {
-    const content: Content[] = [
+    const content: ContentBlock[] = [
       {
         type: 'paragraph',
-        content: [
+        nodes: [
           {
             type: 'text',
-            text: 'Hello, world!',
+            value: 'Hello, world!',
           },
         ],
       },

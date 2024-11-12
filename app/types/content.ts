@@ -1,34 +1,36 @@
-export interface ContentHeading1 {
-  type: 'heading-1';
-  content: ContentInner[];
+export interface ContentBlockHeading1 {
+  type: 'heading1';
+  nodes: ContentInline[];
 }
 
-export interface ContentHeading2 {
-  type: 'heading-2';
-  content: ContentInner[];
+export interface ContentBlockHeading2 {
+  type: 'heading2';
+  nodes: ContentInline[];
 }
 
-export interface ContentHeading3 {
-  type: 'heading-3';
-  content: ContentInner[];
+export interface ContentBlockHeading3 {
+  type: 'heading3';
+  nodes: ContentInline[];
 }
 
-export interface ContentParagraph {
+export interface ContentBlockParagraph {
   type: 'paragraph';
-  content: ContentInner[];
+  nodes: ContentInline[];
 }
 
-export interface ContentLineBreak {
+export interface ContentInlineLineBreak {
   type: 'line-break';
 }
 
-export interface ContentText {
+export interface ContentInlineText {
   type: 'text';
-  text: string;
-  bold?: boolean;
-  italic?: boolean;
-  underline?: boolean;
+  value: string;
 }
 
-export type ContentInner = ContentLineBreak | ContentText;
-export type Content = ContentHeading1 | ContentHeading2 | ContentHeading3 | ContentParagraph;
+export type ContentInline = ContentInlineLineBreak | ContentInlineText;
+
+export type ContentBlock =
+  | ContentBlockHeading1
+  | ContentBlockHeading2
+  | ContentBlockHeading3
+  | ContentBlockParagraph;
