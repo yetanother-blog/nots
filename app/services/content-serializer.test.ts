@@ -288,15 +288,6 @@ describe('toHtml', () => {
   it('serializes paragraph w/ bold, italic, and underline text', () => {
     const content: ContentBlock[] = [
       {
-        type: 'heading1',
-        nodes: [
-          {
-            type: 'text',
-            value: 'Headline',
-          },
-        ],
-      },
-      {
         type: 'paragraph',
         nodes: [
           {
@@ -316,8 +307,6 @@ describe('toHtml', () => {
     ];
 
     const expectedHtml = `<p><strong><i><u>This is everything</u></i>, but this is just bold.</strong></p>`;
-
-    console.log(toHtml(content));
 
     expect(toHtml(content)).toBe(expectedHtml);
   });

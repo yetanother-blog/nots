@@ -4,36 +4,24 @@ import {
   ContentInlineText,
 } from '~/types/content';
 
+const contentBlockTypeMapping: Record<string, ContentBlock['type']> = {
+  H1: 'heading1',
+  H2: 'heading2',
+  H3: 'heading3',
+  P: 'paragraph',
+};
+
 export function toContentJson(nodes: NodeListOf<ChildNode>): ContentBlock[] {
   return Array.from(nodes)
     .map((node) => {
-      if (isHeading1(node)) {
-        return {
-          type: 'heading1',
-          nodes: toContentInlineJson(node),
-        };
+      if (!isValidBlockElement(node)) {
+        return;
       }
 
-      if (isHeading2(node)) {
-        return {
-          type: 'heading2',
-          nodes: toContentInlineJson(node),
-        };
-      }
-
-      if (isHeading3(node)) {
-        return {
-          type: 'heading3',
-          nodes: toContentInlineJson(node),
-        };
-      }
-
-      if (isParagraph(node)) {
-        return {
-          type: 'paragraph',
-          nodes: toContentInlineJson(node),
-        };
-      }
+      return {
+        type: contentBlockTypeMapping[node.tagName],
+        nodes: toContentInlineJson(node),
+      };
     })
     .filter((block): block is ContentBlock => !!block);
 }
@@ -59,15 +47,15 @@ export function toContentInlineJson(parentNode: HTMLElement): ContentInline[] {
         value: node.textContent ?? '',
       };
 
-      if (hasRecursiveParentStrong(node.parentElement)) {
+      if (findParentNode(node.parentElement, 'STRONG')) {
         text.bold = true;
       }
 
-      if (hasRecursiveParentItalic(node.parentElement)) {
+      if (findParentNode(node.parentElement, 'I')) {
         text.italic = true;
       }
 
-      if (hasRecursiveParentUnderline(node.parentElement)) {
+      if (findParentNode(node.parentElement, 'U')) {
         text.underline = true;
       }
 
@@ -120,7 +108,7 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
   let currentElement: Node = div;
   for (const element of elements) {
     if (element.type === 'text') {
-      if (element.bold && !hasRecursiveParentStrong(currentElement)) {
+      if (element.bold && !findParentNode(currentElement, 'STRONG')) {
         const strong = document.createElement('strong');
         currentElement.appendChild(strong);
         currentElement = strong;
@@ -128,26 +116,27 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
 
       if (!element.bold) {
         currentElement =
-          findRecursiveParentStrong(currentElement) ?? currentElement;
+          findParentNode(currentElement, 'STRONG')?.parentElement ??
+          currentElement;
       }
 
-      if (element.italic && !hasRecursiveParentItalic(currentElement)) {
+      if (element.italic && !findParentNode(currentElement, 'I')) {
         const italic = document.createElement('i');
         currentElement.appendChild(italic);
         currentElement = italic;
       }
 
-      if (!element.italic) {
-        currentElement =
-          findRecursiveParentItalic(currentElement) ?? currentElement;
-      }
-
       if (!element.underline) {
         currentElement =
-          findRecursiveParentUnderline(currentElement) ?? currentElement;
+          findParentNode(currentElement, 'U')?.parentElement ?? currentElement;
       }
 
-      if (element.underline && !hasRecursiveParentUnderline(currentElement)) {
+      if (!element.italic) {
+        currentElement =
+          findParentNode(currentElement, 'I')?.parentElement ?? currentElement;
+      }
+
+      if (element.underline && !findParentNode(currentElement, 'U')) {
         const underline = document.createElement('u');
         currentElement.appendChild(underline);
         currentElement = underline;
@@ -161,20 +150,11 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
   return div.childNodes;
 }
 
-function isHeading1(node: Node): node is HTMLHeadingElement {
-  return node instanceof HTMLHeadingElement && node.tagName === 'H1';
-}
-
-function isHeading2(node: Node): node is HTMLHeadingElement {
-  return node instanceof HTMLHeadingElement && node.tagName === 'H2';
-}
-
-function isHeading3(node: Node): node is HTMLHeadingElement {
-  return node instanceof HTMLHeadingElement && node.tagName === 'H3';
-}
-
-function isParagraph(node: Node): node is HTMLParagraphElement {
-  return node instanceof HTMLParagraphElement;
+function isValidBlockElement(node: Node): node is HTMLElement {
+  return (
+    node instanceof HTMLElement &&
+    Object.hasOwn(contentBlockTypeMapping, node.tagName)
+  );
 }
 
 function isText(node: Node): node is Text {
@@ -197,74 +177,17 @@ function isUnderline(node: Node): node is HTMLElement {
   return node instanceof HTMLElement && node.tagName === 'U';
 }
 
-function hasRecursiveParentStrong(node: Node | null): boolean {
-  if (!node) {
-    return false;
-  }
-
-  if (isStrong(node)) {
-    return true;
-  }
-
-  return hasRecursiveParentStrong(node.parentElement);
-}
-
-function findRecursiveParentStrong(node: Node | null): Node | null {
+function findParentNode(
+  node: Node | null,
+  tagName: 'STRONG' | 'I' | 'U'
+): Node | null {
   if (!node) {
     return null;
   }
 
-  if (isStrong(node)) {
+  if (node instanceof HTMLElement && node.tagName === tagName) {
     return node;
   }
 
-  return findRecursiveParentStrong(node.parentElement);
-}
-
-function findRecursiveParentItalic(node: Node | null): Node | null {
-  if (!node) {
-    return null;
-  }
-
-  if (isItalic(node)) {
-    return node;
-  }
-
-  return findRecursiveParentStrong(node.parentElement);
-}
-
-function findRecursiveParentUnderline(node: Node | null): Node | null {
-  if (!node) {
-    return null;
-  }
-
-  if (isUnderline(node)) {
-    return node;
-  }
-
-  return findRecursiveParentStrong(node.parentElement);
-}
-
-function hasRecursiveParentItalic(node: Node | null): boolean {
-  if (!node) {
-    return false;
-  }
-
-  if (isItalic(node)) {
-    return true;
-  }
-
-  return hasRecursiveParentStrong(node.parentElement);
-}
-
-function hasRecursiveParentUnderline(node: Node | null): boolean {
-  if (!node) {
-    return false;
-  }
-
-  if (isUnderline(node)) {
-    return true;
-  }
-
-  return hasRecursiveParentUnderline(node.parentElement);
+  return findParentNode(node.parentElement, tagName);
 }
