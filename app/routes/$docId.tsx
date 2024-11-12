@@ -10,7 +10,7 @@ import {
   useSubmit,
 } from '@remix-run/react';
 import invariant from 'tiny-invariant';
-import { getDocument, updateDocument } from '~/repos/document';
+import { getDocument, updateDocument } from '~/repos/doc';
 import sanitizeHtml from 'sanitize-html';
 
 export const meta: MetaFunction = () => {

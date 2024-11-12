@@ -1,11 +1,11 @@
 {
-  "id": "e5400a9a-3155-4ebe-ae17-f8030933b129",
+  "id": "a6916f44-aca9-4805-ac92-92506f6ca500",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.documents": {
-      "name": "documents",
+    "public.docs": {
+      "name": "docs",
       "schema": "",
       "columns": {
         "id": {
