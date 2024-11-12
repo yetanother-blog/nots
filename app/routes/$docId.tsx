@@ -49,7 +49,9 @@ export async function action({
 export default function DocumentPage() {
   const { doc } = useLoaderData<typeof loader>();
   const submit = useSubmit();
-  const [html, setHtml] = useState('<p>Start here …</p>');
+  const [html, setHtml] = useState(() =>
+    doc.content.length === 0 ? '<p>Start here …</p>' : ''
+  );
 
   useEffect(() => {
     if (doc.content.length === 0) {
