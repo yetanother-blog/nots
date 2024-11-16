@@ -4,6 +4,24 @@ export default {
   content: ['./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      colors: {
+        'nots-primary': {
+          300: '#C2D2FC',
+          400: '#398BF6',
+          500: '#0839B7',
+        },
+        'nots-grey': {
+          50: '#F8F8F8',
+          100: '#EDEDED',
+          200: '#C8C8C8',
+          300: '#A4A4A4',
+          400: '#808080',
+          500: '#5B5B5B',
+          600: '#505050',
+          700: '#303030',
+          800: '#101010',
+        },
+      },
       fontFamily: {
         sans: [
           '"Inter"',
