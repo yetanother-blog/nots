@@ -253,6 +253,57 @@ describe('toHtml', () => {
     expect(toHtml(content)).toBe(expectedHtml);
   });
 
+  it('serializes paragraph w/ link', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          {
+            type: 'link',
+            url: 'https://example.com',
+            nodes: [{ type: 'text', value: 'Go to example' }],
+          },
+        ],
+      },
+    ];
+
+    const expectedHtml = `<p><a href="https://example.com">Go to example</a></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ link and various styling', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          {
+            type: 'text',
+            value: 'The link: ',
+            bold: true,
+          },
+          {
+            type: 'link',
+            url: 'https://example.com',
+            nodes: [
+              { type: 'text', value: 'Go to ' },
+              { type: 'text', value: 'example', bold: true, italic: true },
+            ],
+          },
+          {
+            type: 'text',
+            value: '.',
+            bold: true,
+          },
+        ],
+      },
+    ];
+
+    const expectedHtml = `<p><strong>The link: </strong><a href="https://example.com">Go to <strong><i>example</i></strong></a><strong>.</strong></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
   it('serializes paragraph w/ no text', () => {
     const content: ContentBlock[] = [
       {
