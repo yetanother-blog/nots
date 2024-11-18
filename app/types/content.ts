@@ -26,7 +26,11 @@ export interface ContentInlineText {
   underline?: boolean;
 }
 
-export type ContentInline = ContentInlineText;
+export interface ContentInlineLineBreak {
+  type: 'line-break';
+}
+
+export type ContentInline = ContentInlineText | ContentInlineLineBreak;
 
 export type ContentBlock =
   | ContentBlockHeading1

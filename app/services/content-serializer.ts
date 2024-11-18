@@ -5,7 +5,7 @@ import {
 } from '~/types/content';
 import invert from 'lodash.invert';
 
-type HtmlTagName = 'STRONG' | 'I' | 'U' | 'SPAN';
+type HtmlTagName = 'STRONG' | 'I' | 'U' | 'SPAN' | 'BR';
 
 const contentBlockTypeMapping: Record<string, ContentBlock['type']> = {
   H1: 'heading1',
@@ -39,6 +39,10 @@ export function toContentInlineJson(parentNode: HTMLElement): ContentInline[] {
         isHtmlElement(node, 'SPAN')
       ) {
         return toContentInlineJson(node);
+      }
+
+      if (isHtmlElement(node, 'BR')) {
+        return { type: 'line-break' as const };
       }
 
       if (isText(node)) {
@@ -105,6 +109,12 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
 
   let currentElement: Node = div;
   for (const element of elements) {
+    if (element.type === 'line-break') {
+      const br = document.createElement('br');
+      currentElement.appendChild(br);
+      continue;
+    }
+
     if (element.type === 'text') {
       if (element.bold && !findParentNode(currentElement, 'STRONG')) {
         const strong = document.createElement('strong');
