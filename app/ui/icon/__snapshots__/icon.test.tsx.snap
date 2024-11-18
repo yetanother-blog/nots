@@ -1,0 +1,354 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Icon Component > should render with icon name 1`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M6 4V20M18 4V20M8 4H4M18 12L6 12M8 20H4M20 20H16M20 4H16"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 2`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17 6H9.92857M13.0714 18.5714H6M13.8571 6L9.14286 18.5714"
+      stroke="currentColor"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 3`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M7 12.1538H13.1538C14.8532 12.1538 16.2308 10.7763 16.2308 9.07692C16.2308 7.37759 14.8532 6 13.1538 6H7V12.1538ZM7 12.1538H13.9231C15.6224 12.1538 17 13.5314 17 15.2308C17 16.9301 15.6224 18.3077 13.9231 18.3077H7V12.1538Z"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 4`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16.375 5V10.6875C16.375 13.3799 14.1924 15.5625 11.5 15.5625C8.80761 15.5625 6.625 13.3799 6.625 10.6875V5M5 18.8125H18"
+      stroke="currentColor"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 5`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17.5 4V20M19.5 4H9C6.79086 4 5 5.79086 5 8C5 10.2091 6.79086 12 9 12H14M14 4V20M12 20H19.5"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 6`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M18 6L6 18M6 6L18 18"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 7`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 2V6M12 18V22M6 12H2M22 12H18M19.0784 19.0784L16.25 16.25M19.0784 4.99994L16.25 7.82837M4.92157 19.0784L7.75 16.25M4.92157 4.99994L7.75 7.82837"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 8`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20 16L14.5 16L11 16"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+    <path
+      d="M20 8L14.5 8L11 8"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+    <circle
+      cx="6"
+      cy="8"
+      fill="currentColor"
+      r="2"
+    />
+    <circle
+      cx="6"
+      cy="16"
+      fill="currentColor"
+      r="2"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 9`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20 16L14.5 16L11 16"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+    <path
+      d="M20 8L14.5 8L11 8"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+    <path
+      d="M6.7152 4.18182V10H5.13565V5.63636H5.10156L3.82884 6.39773V5.05682L5.26065 4.18182H6.7152Z"
+      fill="currentColor"
+    />
+    <path
+      d="M3.80043 19V17.8636L5.97088 16.0682C6.11482 15.9489 6.23793 15.8371 6.3402 15.733C6.44437 15.6269 6.52391 15.518 6.57884 15.4062C6.63565 15.2945 6.66406 15.1705 6.66406 15.0341C6.66406 14.8845 6.63187 14.7566 6.56747 14.6506C6.50497 14.5445 6.41785 14.4631 6.30611 14.4062C6.19437 14.3475 6.06558 14.3182 5.91974 14.3182C5.77391 14.3182 5.64512 14.3475 5.53338 14.4062C5.42353 14.465 5.3383 14.5511 5.2777 14.6648C5.21709 14.7784 5.18679 14.9167 5.18679 15.0795H3.68679C3.68679 14.6705 3.77865 14.3182 3.96236 14.0227C4.14607 13.7273 4.40554 13.5 4.74077 13.3409C5.07599 13.1818 5.46899 13.1023 5.91974 13.1023C6.38565 13.1023 6.78906 13.1771 7.12997 13.3267C7.47277 13.4744 7.73698 13.6828 7.92259 13.9517C8.11009 14.2206 8.20384 14.536 8.20384 14.8977C8.20384 15.1212 8.15743 15.3437 8.06463 15.5653C7.97183 15.785 7.80516 16.0284 7.56463 16.2955C7.3241 16.5625 6.98224 16.8807 6.53906 17.25L5.99361 17.7045V17.7386H8.26634V19H3.80043Z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 10`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20 16L14.5 16L11 16"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+    <path
+      d="M20 8L14.5 8L11 8"
+      stroke="currentColor"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+    />
+    <circle
+      cx="5"
+      cy="8"
+      fill="currentColor"
+      r="2.25"
+      stroke="currentColor"
+      stroke-width="1.5"
+    />
+    <circle
+      cx="5"
+      cy="16"
+      r="2.25"
+      stroke="currentColor"
+      stroke-width="1.5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 11`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M6 10L11.6464 15.6464C11.8417 15.8417 12.1583 15.8417 12.3536 15.6464L18 10"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 12`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M20.0369 6.90909V17.0909H18.4957V8.45028H18.4361L16 10.0412V8.5696L18.5405 6.90909H20.0369Z"
+      fill="currentColor"
+    />
+    <path
+      d="M4 17.0909V6.90909H5.53622V11.3338H10.6122V6.90909H12.1534V17.0909H10.6122V12.6513H5.53622V17.0909H4Z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 13`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14.0099 17.321V16.2074L17.4553 12.6378C17.8232 12.25 18.1264 11.9103 18.3651 11.6186C18.607 11.3236 18.7876 11.0436 18.907 10.7784C19.0263 10.5133 19.0859 10.2315 19.0859 9.93324C19.0859 9.59517 19.0064 9.3035 18.8473 9.05824C18.6882 8.80966 18.4711 8.61908 18.196 8.48651C17.9209 8.35062 17.611 8.28267 17.2663 8.28267C16.9018 8.28267 16.5836 8.35724 16.3118 8.50639C16.04 8.65554 15.8312 8.866 15.6854 9.13778C15.5395 9.40956 15.4666 9.72775 15.4666 10.0923H14C14 9.47254 14.1425 8.93063 14.4276 8.46662C14.7126 8.0026 15.1037 7.64299 15.6009 7.38778C16.098 7.12926 16.6631 7 17.2962 7C17.9358 7 18.4993 7.1276 18.9865 7.38281C19.477 7.63471 19.8598 7.9794 20.1349 8.4169C20.41 8.85109 20.5476 9.34162 20.5476 9.88849C20.5476 10.2663 20.4763 10.6359 20.3338 10.9972C20.1946 11.3584 19.951 11.7611 19.603 12.2053C19.255 12.6461 18.7711 13.1813 18.1513 13.8111L16.1278 15.929V16.0036H20.7116V17.321H14.0099Z"
+      fill="currentColor"
+    />
+    <path
+      d="M4 17.321V7.13921H5.53622V11.5639H10.6122V7.13921H12.1534V17.321H10.6122V12.8814H5.53622V17.321H4Z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon Component > should render with icon name 14`] = `
+<div>
+  <svg
+    class=""
+    fill="transparent"
+    focusable="false"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17.5945 17.2301C16.9117 17.2301 16.3018 17.1124 15.7649 16.8771C15.2313 16.6418 14.8087 16.3153 14.4972 15.8977C14.1889 15.4768 14.0232 14.9896 14 14.4361H15.5611C15.581 14.7377 15.6821 14.9995 15.8643 15.2216C16.05 15.4403 16.2919 15.6094 16.5902 15.7287C16.8885 15.848 17.2199 15.9077 17.5845 15.9077C17.9856 15.9077 18.3402 15.8381 18.6484 15.6989C18.96 15.5597 19.2036 15.3658 19.3793 15.1172C19.5549 14.8653 19.6428 14.5753 19.6428 14.2472C19.6428 13.9058 19.5549 13.6058 19.3793 13.3473C19.2069 13.0855 18.9534 12.88 18.6186 12.7308C18.2872 12.5817 17.8861 12.5071 17.4155 12.5071H16.5554V11.2543H17.4155C17.7933 11.2543 18.1248 11.1863 18.4098 11.0504C18.6982 10.9145 18.9235 10.7256 19.0859 10.4837C19.2483 10.2384 19.3295 9.9517 19.3295 9.62358C19.3295 9.30871 19.2583 9.03527 19.1158 8.80326C18.9766 8.56794 18.7777 8.38399 18.5192 8.25142C18.264 8.11884 17.9624 8.05255 17.6143 8.05255C17.2829 8.05255 16.973 8.11387 16.6847 8.2365C16.3996 8.35582 16.1676 8.52817 15.9886 8.75355C15.8097 8.97561 15.7135 9.24242 15.7003 9.55397H14.2138C14.2304 9.00378 14.3928 8.51988 14.701 8.10227C15.0125 7.68465 15.4235 7.35819 15.9339 7.12286C16.4444 6.88754 17.0111 6.76988 17.6342 6.76988C18.2872 6.76988 18.8506 6.89749 19.3246 7.15269C19.8018 7.40459 20.1697 7.741 20.4283 8.16193C20.6901 8.58286 20.8194 9.04356 20.8161 9.54403C20.8194 10.1141 20.6603 10.598 20.3388 10.9957C20.0206 11.3935 19.5964 11.6603 19.0661 11.7962V11.8757C19.7422 11.9785 20.2659 12.2469 20.6371 12.6811C21.0116 13.1153 21.1972 13.6539 21.1939 14.2969C21.1972 14.857 21.0414 15.3591 20.7266 15.8033C20.415 16.2474 19.9891 16.5971 19.4489 16.8523C18.9086 17.1042 18.2905 17.2301 17.5945 17.2301Z"
+      fill="currentColor"
+    />
+    <path
+      d="M4 17.0909V6.90909H5.53622V11.3338H10.6122V6.90909H12.1534V17.0909H10.6122V12.6513H5.53622V17.0909H4Z"
+      fill="currentColor"
+    />
+  </svg>
+</div>
+`;
