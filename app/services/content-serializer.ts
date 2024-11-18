@@ -136,6 +136,8 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
 
       const link = document.createElement('a');
       link.setAttribute('href', element.url);
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
       link.append(...toHtmlInline(element.nodes));
       currentElement.appendChild(link);
 

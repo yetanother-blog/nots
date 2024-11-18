@@ -267,7 +267,7 @@ describe('toHtml', () => {
       },
     ];
 
-    const expectedHtml = `<p><a href="https://example.com">Go to example</a></p>`;
+    const expectedHtml = `<p><a href="https://example.com" target="_blank" rel="noopener noreferrer">Go to example</a></p>`;
 
     expect(toHtml(content)).toBe(expectedHtml);
   });
@@ -299,7 +299,7 @@ describe('toHtml', () => {
       },
     ];
 
-    const expectedHtml = `<p><strong>The link: </strong><a href="https://example.com">Go to <strong><i>example</i></strong></a><strong>.</strong></p>`;
+    const expectedHtml = `<p><strong>The link: </strong><a href="https://example.com" target="_blank" rel="noopener noreferrer">Go to <strong><i>example</i></strong></a><strong>.</strong></p>`;
 
     expect(toHtml(content)).toBe(expectedHtml);
   });
