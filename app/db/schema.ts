@@ -1,8 +1,8 @@
-import { pgTable, text, uuid, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, jsonb, uuid, timestamp } from 'drizzle-orm/pg-core';
 
-export const documentsTable = pgTable('documents', {
+export const docsTable = pgTable('docs', {
   id: uuid().primaryKey().defaultRandom(),
-  content: text().notNull().default(''),
+  content: jsonb().notNull().default([]),
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),
   deletedAt: timestamp(),

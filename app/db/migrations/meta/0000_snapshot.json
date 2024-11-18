@@ -1,11 +1,11 @@
 {
-  "id": "5c7b216a-924f-423a-bc4c-04562e3d1ba3",
+  "id": "a6916f44-aca9-4805-ac92-92506f6ca500",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.documents": {
-      "name": "documents",
+    "public.docs": {
+      "name": "docs",
       "schema": "",
       "columns": {
         "id": {
@@ -17,10 +17,10 @@
         },
         "content": {
           "name": "content",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true,
-          "default": "''"
+          "default": "'[]'::jsonb"
         },
         "createdAt": {
           "name": "createdAt",

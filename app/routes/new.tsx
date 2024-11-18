@@ -1,7 +1,7 @@
 import { redirect } from '@remix-run/node';
-import { createDocument } from '~/repos/document';
+import { createDoc } from '~/repos/doc';
 
 export async function loader() {
-  const document = await createDocument();
-  return redirect(`/${document.id}`);
+  const doc = await createDoc();
+  return redirect(`/${doc.id}`);
 }

@@ -9,9 +9,10 @@ import {
   useLoaderData,
   useSubmit,
 } from '@remix-run/react';
+import { useEffect, useState } from 'react';
 import invariant from 'tiny-invariant';
-import { getDocument, updateDocument } from '~/repos/document';
-import sanitizeHtml from 'sanitize-html';
+import { getDoc, updateDoc } from '~/repos/doc';
+import { toContentJson, toHtml } from '~/services/content-serializer';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Document' }];
@@ -24,13 +25,13 @@ export const shouldRevalidate: ShouldRevalidateFunction = () => {
 export async function loader({ params: { docId } }: LoaderFunctionArgs) {
   invariant(docId, 'Document ID is required');
 
-  const document = await getDocument(docId);
+  const doc = await getDoc(docId);
 
-  if (!document) {
+  if (!doc) {
     return redirect('/');
   }
 
-  return json({ document });
+  return json({ doc });
 }
 
 export async function action({
@@ -39,39 +40,51 @@ export async function action({
 }: LoaderFunctionArgs) {
   invariant(docId, 'Document ID is required');
 
-  const formData = await request.formData();
-  const content = formData.get('content') as string;
-  const sanitizedContent = sanitizeHtml(content, {
-    allowedTags: ['b', 'i', 'p', 'br', 'h1', 'h2', 'h3'],
-  });
-
-  await updateDocument(docId, sanitizedContent);
+  const data = await request.json();
+  await updateDoc(docId, data.content);
 
   return json({ ok: true });
 }
 
 export default function DocumentPage() {
-  const { document } = useLoaderData<typeof loader>();
+  const { doc } = useLoaderData<typeof loader>();
   const submit = useSubmit();
+  const [html, setHtml] = useState(() =>
+    doc.content.length === 0 ? '<p>Start here …</p>' : ''
+  );
+
+  useEffect(() => {
+    if (doc.content.length === 0) {
+      return;
+    }
+
+    const serializedHtml = toHtml(doc.content);
+    setHtml(serializedHtml);
+  }, [doc.content]);
 
   const handleChange = (event: React.ChangeEvent<HTMLDivElement>) => {
-    submit(
-      { content: event.currentTarget.innerHTML },
-      { method: 'post', replace: true, navigate: false }
-    );
+    const content = toContentJson(event.currentTarget.childNodes);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data = { content } as any;
+
+    submit(data, {
+      method: 'post',
+      encType: 'application/json',
+      replace: true,
+      navigate: false,
+    });
   };
 
   return (
     <div className="p-8 flex gap-3 flex-col">
       <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
-        Document {document.id}
+        Document {doc.id}
       </h1>
       <div
         onInput={handleChange}
         contentEditable
         dangerouslySetInnerHTML={{
-          __html:
-            document.content === '' ? '<p>Start here …</p>' : document.content,
+          __html: html,
         }}
       ></div>
     </div>
