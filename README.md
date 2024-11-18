@@ -1,40 +1,51 @@
-# Welcome to Remix!
+# 📝 nots
 
-- 📖 [Remix docs](https://remix.run/docs)
+## 🤓 Development
 
-## Development
+### Prerequisites
 
-Run the dev server:
+- [Node.js v20](https://nodejs.org/en)
+- [Docker Desktop](https://docs.docker.com/desktop/)
 
-```shellscript
-npm run dev
-```
+### App
 
-## Deployment
+To work on the Remix app, please follow the steps: 
 
-First, build your app for production:
-
+1. Get the code: 
 ```sh
-npm run build
+$ git clone git@github.com:yetanother-blog/nots.git
 ```
-
-Then run the app in production mode:
-
+2. Install dependencies: 
 ```sh
-npm start
+$ npm install
+```
+3. Start docker compose to run a local Postgres database:
+```sh
+npm run docker:up
+```
+4. Migrate database:
+```sh
+$ npx drizzle-kit migrate
+```
+5. Start Remix dev server:
+```sh
+$ npm run dev
 ```
 
-Now you'll need to pick a host to deploy it to.
+Go to http://localhost:5173/.
 
-### DIY
+### Storybook
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+We use [Storybook](https://storybook.js.org/) to develop UI components. All UI components live in `~/app/ui`. To start Storybook, just run `npm run storybook` and go to http://localhost:6006/.
 
-Make sure to deploy the output of `npm run build`
+## 📦 Deployments
 
-- `build/server`
-- `build/client`
+Every merge on `main` triggers a [deployment pipeline](https://github.com/yetanother-blog/nots/actions/workflows/cd.yml). The pipeline runs some checks and deploys the Remix app and Storybook. We have the following deployed instances:
 
-## Styling
+| Name          | URL                                  |
+| ------------- | ------------------------------------ |
+| App (staging) | https://nots-app-staging.vercel.app/ |
+| App (prod)    | https://nots-app-prod.vercel.app/    |
+| UI (prod)     | https://nots-ui-prod.vercel.app/     |
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+In addition, every authorized pull request deploys a preview deployment of Storybook. You can find the link to the preview in the pull request. 
