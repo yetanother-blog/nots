@@ -41,31 +41,33 @@ export function toContentInlineJson(parentNode: HTMLElement): ContentInline[] {
         return toContentInlineJson(node);
       }
 
-      if (!isText(node)) {
-        return;
+      if (isText(node)) {
+        return toTextJson(node);
       }
-
-      const text: ContentInlineText = {
-        type: 'text',
-        value: node.textContent ?? '',
-      };
-
-      if (findParentNode(node.parentElement, 'STRONG')) {
-        text.bold = true;
-      }
-
-      if (findParentNode(node.parentElement, 'I')) {
-        text.italic = true;
-      }
-
-      if (findParentNode(node.parentElement, 'U')) {
-        text.underline = true;
-      }
-
-      return text;
     })
     .flat()
     .filter((element) => !!element);
+}
+
+export function toTextJson(node: Node): ContentInlineText {
+  const text: ContentInlineText = {
+    type: 'text',
+    value: node.textContent ?? '',
+  };
+
+  if (findParentNode(node.parentElement, 'STRONG')) {
+    text.bold = true;
+  }
+
+  if (findParentNode(node.parentElement, 'I')) {
+    text.italic = true;
+  }
+
+  if (findParentNode(node.parentElement, 'U')) {
+    text.underline = true;
+  }
+
+  return text;
 }
 
 export function toHtml(content: ContentBlock[]): string {
