@@ -5,6 +5,8 @@ import {
 } from '~/types/content';
 import invert from 'lodash.invert';
 
+type HtmlTagName = 'STRONG' | 'I' | 'U' | 'SPAN';
+
 const contentBlockTypeMapping: Record<string, ContentBlock['type']> = {
   H1: 'heading1',
   H2: 'heading2',
@@ -31,10 +33,10 @@ export function toContentInlineJson(parentNode: HTMLElement): ContentInline[] {
   return Array.from(parentNode.childNodes)
     .map((node) => {
       if (
-        isStrong(node) ||
-        isItalic(node) ||
-        isUnderline(node) ||
-        isSpan(node)
+        isHtmlElement(node, 'STRONG') ||
+        isHtmlElement(node, 'I') ||
+        isHtmlElement(node, 'U') ||
+        isHtmlElement(node, 'SPAN')
       ) {
         return toContentInlineJson(node);
       }
@@ -155,31 +157,16 @@ function isText(node: Node): node is Text {
   return node.nodeType === node.TEXT_NODE;
 }
 
-function isSpan(node: Node): node is HTMLSpanElement {
-  return node instanceof HTMLSpanElement;
+function isHtmlElement(node: Node, tagName: HtmlTagName): node is HTMLElement {
+  return node instanceof HTMLElement && node.tagName === tagName;
 }
 
-function isStrong(node: Node): node is HTMLElement {
-  return node instanceof HTMLElement && node.tagName === 'STRONG';
-}
-
-function isItalic(node: Node): node is HTMLElement {
-  return node instanceof HTMLElement && node.tagName === 'I';
-}
-
-function isUnderline(node: Node): node is HTMLElement {
-  return node instanceof HTMLElement && node.tagName === 'U';
-}
-
-function findParentNode(
-  node: Node | null,
-  tagName: 'STRONG' | 'I' | 'U'
-): Node | null {
+function findParentNode(node: Node | null, tagName: HtmlTagName): Node | null {
   if (!node) {
     return null;
   }
 
-  if (node instanceof HTMLElement && node.tagName === tagName) {
+  if (isHtmlElement(node, tagName)) {
     return node;
   }
 
