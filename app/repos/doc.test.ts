@@ -3,7 +3,7 @@ import { createDoc, getDoc, updateDoc } from './doc';
 import { docsTable } from '~/db/schema';
 import { db } from '~/db';
 import { v4 as uuid } from 'uuid';
-import { ContentBlock } from '~/types/content';
+import { SerializedEditorState } from '~/ui';
 
 describe('createDoc', () => {
   it('creates a doc', async () => {
@@ -39,17 +39,16 @@ describe('getDoc', () => {
 
 describe('updateDoc', () => {
   it('updates the doc', async () => {
-    const content: ContentBlock[] = [
-      {
-        type: 'paragraph',
-        nodes: [
-          {
-            type: 'text',
-            value: 'Hello, world!',
-          },
-        ],
+    const content: SerializedEditorState = {
+      root: {
+        type: 'root',
+        format: '',
+        indent: 0,
+        version: 1,
+        children: [],
+        direction: 'ltr',
       },
-    ];
+    };
 
     const doc = await db.insert(docsTable).values({}).returning();
 
