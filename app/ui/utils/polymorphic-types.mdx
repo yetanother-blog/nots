@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas } from '@storybook/blocks';
+
+<Meta title="Utils/PolymorphicTypes" />
+
+# Polymorphic Types
+
+This utility is a wrapper around the Polymorphic Types pattern. It allows you to create a component that can be used as a different html element. This is useful when you want to create a component that can be used as a heading, paragraph, or any other html element. **You can use these types for any component that needs to be polymorphic.**
+
+## Polymorphic Types without ref
+
+To keep things simple we have two types. One for components that don’t need a ref and one for components that need a ref.
+
+```ts
+type AsProp<C extends ElementType> = {
+  as?: C;
+};
+
+export type PropsToOmit<C extends ElementType, P> = keyof (AsProp<C> & P);
+
+// A polymorphic component prop that can be used to override the default element type.
+export type PolymorphicComponentProp<
+  C extends ElementType,
+  Props = {},
+> = PropsWithChildren<Props & AsProp<C>> &
+  Omit<ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
+```
+
+### 🤯 Usage without ref
+
+```tsx
+// This types are component specific. Good part about it it's encapsulated from the polymorphic types.
+type TextProps = { textAlign?: 'left' | 'right' | 'center' };
+
+// Note the Generic defaulted to a "p". If no "as" prop is passed e.g., <Text>Hi</Text>, TS will treat the rendered element as a paragraph and provide typings accordingly
+export const Text = <C extends React.ElementType = 'span'>({
+  as,
+  children,
+  ...restProps
+}: PolymorphicComponentProp<C, TextProps>) => {
+  const Component = as || 'p';
+
+  return <Component {...restProps}>{children}</Component>;
+};
+```
+
+## Polymorphic Types with ref
+
+```ts
+export type PolymorphicComponentPropWithRef<
+  C extends ElementType,
+  Props = {},
+> = PolymorphicComponentProp<C, Props> & { ref?: PolymorphicRef<C> };
+
+export type PolymorphicRef<C extends ElementType> =
+  ComponentPropsWithRef<C>['ref'];
+```
+
+### 🥵 Usage with ref
+
+```tsx
+type TextProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
+  C,
+  { textAlign?: 'left' | 'right' | 'center' };
+>;
+
+type TextComponent = <C extends React.ElementType = 'p'>(
+  props: TextProps<C>
+) => React.ReactElement | null;
+
+export const Text: TextComponent = React.forwardRef(
+  <C extends React.ElementType = 'p'>(
+    { as, children, ...props }: TextProps<C>,
+    ref?: PolymorphicRef<C>
+  ) => {
+    const Component = as || 'p';
+
+    return (
+      <Component {...props} ref={ref}>
+        {children}
+      </Component>
+    );
+  }
+);
+```
+
+### 💡 Omit Props
+
+```ts
+Omit<ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
+```
+
+This line of code omits the props that are already defined in the PolymorphicComponentProp. This is necessary because the PolymorphicComponentProp already defines the props that are needed to override the default element type. Imagine you have `color` prop in your custom component. This would clash with the default prop comming from the `as` prop (e.g. `HTMLDivElement`).
+
+# Source
+
+[Polymorphic Types](https://github.com/ohansemmanuel/polymorphic-react-component)
