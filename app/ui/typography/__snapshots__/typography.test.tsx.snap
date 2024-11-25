@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Typography Component > font props > should render with text align center 1`] = `
+<div>
+  <h1
+    class="antialiased font-sans text-5xl font-bold text-center"
+  >
+    Test
+  </h1>
+</div>
+`;
+
+exports[`Typography Component > font props > should render with text align left 1`] = `
+<div>
+  <h1
+    class="antialiased font-sans text-5xl font-bold text-left"
+  >
+    Test
+  </h1>
+</div>
+`;
+
+exports[`Typography Component > font props > should render with text align right 1`] = `
+<div>
+  <h1
+    class="antialiased font-sans text-5xl font-bold text-right"
+  >
+    Test
+  </h1>
+</div>
+`;
+
+exports[`Typography Component > font props > should render with text transform capitalize 1`] = `
+<div>
+  <h1
+    class="antialiased font-sans text-5xl font-bold capitalize"
+  >
+    Test
+  </h1>
+</div>
+`;
+
+exports[`Typography Component > font props > should render with text transform lowercase 1`] = `
+<div>
+  <h1
+    class="antialiased font-sans text-5xl font-bold lowercase"
+  >
+    Test
+  </h1>
+</div>
+`;
+
+exports[`Typography Component > font props > should render with text transform uppercase 1`] = `
+<div>
+  <h1
+    class="antialiased font-sans text-5xl font-bold uppercase"
+  >
+    Test
+  </h1>
+</div>
+`;
