@@ -2,11 +2,11 @@ import { eq } from 'drizzle-orm';
 import { validate as isValidUuid } from 'uuid';
 import { db } from '~/db';
 import { docsTable } from '~/db/schema';
-import { ContentBlock } from '~/types/content';
+import { SerializedEditorState } from '~/ui';
 
 export interface Doc {
   id: string;
-  content: ContentBlock[];
+  content: SerializedEditorState;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,7 +30,7 @@ export async function getDoc(id: string): Promise<Doc | null> {
 
 export async function updateDoc(
   id: string,
-  content: ContentBlock[]
+  content: SerializedEditorState
 ): Promise<Doc> {
   const response = await db
     .update(docsTable)
@@ -47,6 +47,6 @@ export async function updateDoc(
 function formatDoc(doc: typeof docsTable.$inferSelect): Doc {
   return {
     ...doc,
-    content: doc.content as ContentBlock[],
+    content: doc.content as SerializedEditorState,
   };
 }

@@ -9,10 +9,9 @@ import {
   useLoaderData,
   useSubmit,
 } from '@remix-run/react';
-import { useEffect, useState } from 'react';
 import invariant from 'tiny-invariant';
 import { getDoc, updateDoc } from '~/repos/doc';
-import { toContentJson, toHtml } from '~/services/content-serializer';
+import { Editor, EditorState } from '~/ui';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Document' }];
@@ -49,21 +48,9 @@ export async function action({
 export default function DocumentPage() {
   const { doc } = useLoaderData<typeof loader>();
   const submit = useSubmit();
-  const [html, setHtml] = useState(() =>
-    doc.content.length === 0 ? '<p>Start here …</p>' : ''
-  );
 
-  useEffect(() => {
-    if (doc.content.length === 0) {
-      return;
-    }
-
-    const serializedHtml = toHtml(doc.content);
-    setHtml(serializedHtml);
-  }, [doc.content]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLDivElement>) => {
-    const content = toContentJson(event.currentTarget.childNodes);
+  const handleChange = (editorState: EditorState) => {
+    const content = editorState.toJSON();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const data = { content } as any;
 
@@ -80,13 +67,7 @@ export default function DocumentPage() {
       <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
         Document {doc.id}
       </h1>
-      <div
-        onInput={handleChange}
-        contentEditable
-        dangerouslySetInnerHTML={{
-          __html: html,
-        }}
-      ></div>
+      <Editor onChange={handleChange} initialEditorState={doc.content} />
     </div>
   );
 }

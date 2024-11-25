@@ -1,3 +1,6 @@
+/** Editor */
+export * from './editor/editor';
+
 /** Forms */
 export * from './button/button';
 

@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<div>
+  <div
+    contenteditable="true"
+    data-lexical-editor="true"
+    role="textbox"
+    spellcheck="true"
+    style="user-select: text; white-space: pre-wrap; word-break: break-word;"
+  >
+    <p>
+      <br />
+    </p>
+  </div>
+</div>
+`;
