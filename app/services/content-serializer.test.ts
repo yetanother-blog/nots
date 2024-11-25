@@ -74,12 +74,19 @@ describe('toContentJson', () => {
 
   it('serializes paragraph w/ line break', () => {
     const html = document.createElement('div');
-    html.innerHTML = `<p><br></p>`;
+    html.innerHTML = `<p><br><br /></p>`;
 
     const expectedContent: ContentBlock[] = [
       {
         type: 'paragraph',
-        nodes: [],
+        nodes: [
+          {
+            type: 'line-break',
+          },
+          {
+            type: 'line-break',
+          },
+        ],
       },
     ];
 
@@ -229,6 +236,70 @@ describe('toHtml', () => {
     ];
 
     const expectedHtml = `<p>Hello, world!</p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ line break', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [{ type: 'line-break' }],
+      },
+    ];
+
+    const expectedHtml = `<p><br></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ link', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          {
+            type: 'link',
+            url: 'https://example.com',
+            nodes: [{ type: 'text', value: 'Go to example' }],
+          },
+        ],
+      },
+    ];
+
+    const expectedHtml = `<p><a href="https://example.com" target="_blank" rel="noopener noreferrer">Go to example</a></p>`;
+
+    expect(toHtml(content)).toBe(expectedHtml);
+  });
+
+  it('serializes paragraph w/ link and various styling', () => {
+    const content: ContentBlock[] = [
+      {
+        type: 'paragraph',
+        nodes: [
+          {
+            type: 'text',
+            value: 'The link: ',
+            bold: true,
+          },
+          {
+            type: 'link',
+            url: 'https://example.com',
+            nodes: [
+              { type: 'text', value: 'Go to ' },
+              { type: 'text', value: 'example', bold: true, italic: true },
+            ],
+          },
+          {
+            type: 'text',
+            value: '.',
+            bold: true,
+          },
+        ],
+      },
+    ];
+
+    const expectedHtml = `<p><strong>The link: </strong><a href="https://example.com" target="_blank" rel="noopener noreferrer">Go to <strong><i>example</i></strong></a><strong>.</strong></p>`;
 
     expect(toHtml(content)).toBe(expectedHtml);
   });

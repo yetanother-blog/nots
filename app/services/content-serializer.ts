@@ -1,11 +1,12 @@
 import {
   ContentBlock,
   ContentInline,
+  ContentInlineLink,
   ContentInlineText,
 } from '~/types/content';
 import invert from 'lodash.invert';
 
-type HtmlTagName = 'STRONG' | 'I' | 'U' | 'SPAN';
+type HtmlTagName = 'STRONG' | 'I' | 'U' | 'SPAN' | 'BR' | 'A';
 
 const contentBlockTypeMapping: Record<string, ContentBlock['type']> = {
   H1: 'heading1',
@@ -41,6 +42,14 @@ export function toContentInlineJson(parentNode: HTMLElement): ContentInline[] {
         return toContentInlineJson(node);
       }
 
+      if (isHtmlElement(node, 'BR')) {
+        return { type: 'line-break' as const };
+      }
+
+      if (isHtmlElement(node, 'A')) {
+        return toLinkJson(node);
+      }
+
       if (isText(node)) {
         return toTextJson(node);
       }
@@ -68,6 +77,14 @@ export function toTextJson(node: Node): ContentInlineText {
   }
 
   return text;
+}
+
+export function toLinkJson(node: HTMLElement): ContentInlineLink {
+  return {
+    type: 'link',
+    url: node.getAttribute('href') ?? '',
+    nodes: toContentInlineJson(node),
+  };
 }
 
 export function toHtml(content: ContentBlock[]): string {
@@ -105,33 +122,51 @@ export function toHtmlInline(elements: ContentInline[]): NodeListOf<ChildNode> {
 
   let currentElement: Node = div;
   for (const element of elements) {
+    if (element.type === 'line-break') {
+      const br = document.createElement('br');
+      currentElement.appendChild(br);
+
+      continue;
+    }
+
+    if (element.type === 'link') {
+      currentElement = ensureElementNotNested(currentElement, 'STRONG');
+      currentElement = ensureElementNotNested(currentElement, 'I');
+      currentElement = ensureElementNotNested(currentElement, 'U');
+
+      const link = document.createElement('a');
+      link.setAttribute('href', element.url);
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.append(...toHtmlInline(element.nodes));
+      currentElement.appendChild(link);
+
+      continue;
+    }
+
     if (element.type === 'text') {
+      if (!element.bold) {
+        currentElement = ensureElementNotNested(currentElement, 'STRONG');
+      }
+
+      if (!element.underline) {
+        currentElement = ensureElementNotNested(currentElement, 'U');
+      }
+
+      if (!element.italic) {
+        currentElement = ensureElementNotNested(currentElement, 'I');
+      }
+
       if (element.bold && !findParentNode(currentElement, 'STRONG')) {
         const strong = document.createElement('strong');
         currentElement.appendChild(strong);
         currentElement = strong;
       }
 
-      if (!element.bold) {
-        currentElement =
-          findParentNode(currentElement, 'STRONG')?.parentElement ??
-          currentElement;
-      }
-
       if (element.italic && !findParentNode(currentElement, 'I')) {
         const italic = document.createElement('i');
         currentElement.appendChild(italic);
         currentElement = italic;
-      }
-
-      if (!element.underline) {
-        currentElement =
-          findParentNode(currentElement, 'U')?.parentElement ?? currentElement;
-      }
-
-      if (!element.italic) {
-        currentElement =
-          findParentNode(currentElement, 'I')?.parentElement ?? currentElement;
       }
 
       if (element.underline && !findParentNode(currentElement, 'U')) {
@@ -173,4 +208,13 @@ function findParentNode(node: Node | null, tagName: HtmlTagName): Node | null {
   }
 
   return findParentNode(node.parentElement, tagName);
+}
+
+function ensureElementNotNested(
+  currentElement: Node,
+  tagName: HtmlTagName
+): Node {
+  return (
+    findParentNode(currentElement, tagName)?.parentElement ?? currentElement
+  );
 }

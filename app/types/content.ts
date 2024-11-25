@@ -26,7 +26,20 @@ export interface ContentInlineText {
   underline?: boolean;
 }
 
-export type ContentInline = ContentInlineText;
+export interface ContentInlineLineBreak {
+  type: 'line-break';
+}
+
+export interface ContentInlineLink {
+  type: 'link';
+  url: string;
+  nodes: ContentInline[];
+}
+
+export type ContentInline =
+  | ContentInlineText
+  | ContentInlineLineBreak
+  | ContentInlineLink;
 
 export type ContentBlock =
   | ContentBlockHeading1
