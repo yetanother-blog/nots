@@ -20,7 +20,7 @@ describe('Button', () => {
       <Button variant="filled" disabled />
     );
     const button = getByRole('button');
-    expect(button).toHaveClass('bg-nots-grey-200');
+    expect(button).toHaveClass('disabled:bg-nots-grey-200');
     expect(container).toMatchSnapshot();
   });
 

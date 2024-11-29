@@ -3,7 +3,7 @@
 exports[`Button > should render disabled button 1`] = `
 <div>
   <button
-    class="flex items-center justify-center rounded-sm transition-colors duration-200 ease-in-out gap-2 px-3 py-[6px] flex-row text-white dark:text-nots-grey-800 drop-shadow-none hover:drop-shadow-none pointer-events-none bg-nots-grey-200 dark:bg-white dark:text-nots-grey-200 focus:outline-none"
+    class="flex items-center justify-center rounded-sm transition-colors duration-200 ease-in-out gap-2 px-3 py-[6px] flex-row text-white dark:text-nots-grey-800 disabled:bg-nots-grey-200 dark:disabled:bg-white dark:disabled:text-nots-grey-200 focus:outline-none bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-300"
     disabled=""
   />
 </div>
@@ -12,7 +12,7 @@ exports[`Button > should render disabled button 1`] = `
 exports[`Button > should render grey filled button 1`] = `
 <div>
   <button
-    class="flex items-center justify-center rounded-sm transition-colors duration-200 ease-in-out gap-2 px-3 py-[6px] flex-row text-white dark:text-nots-grey-800 bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-300"
+    class="flex items-center justify-center rounded-sm transition-colors duration-200 ease-in-out gap-2 px-3 py-[6px] flex-row text-white dark:text-nots-grey-800 disabled:bg-nots-grey-200 dark:disabled:bg-white dark:disabled:text-nots-grey-200 focus:outline-none bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-300"
   />
 </div>
 `;
@@ -20,7 +20,7 @@ exports[`Button > should render grey filled button 1`] = `
 exports[`Button > should render loading button 1`] = `
 <div>
   <button
-    class="flex items-center justify-center rounded-sm transition-colors duration-200 ease-in-out gap-2 px-3 py-[6px] flex-row pointer-events-none text-white dark:text-nots-grey-800 drop-shadow-none hover:drop-shadow-none pointer-events-none bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-300 hover:bg-ws-primary-500"
+    class="flex items-center justify-center rounded-sm transition-colors duration-200 ease-in-out gap-2 px-3 py-[6px] flex-row pointer-events-none text-white dark:text-nots-grey-800 drop-shadow-none hover:drop-shadow-none pointer-events-none disabled:bg-nots-grey-200 dark:disabled:bg-white dark:disabled:text-nots-grey-200 focus:outline-none bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-300 hover:bg-ws-primary-500"
   >
     <div
       class="pointer-events-none flex items-center justify-center absolute"
@@ -50,16 +50,6 @@ exports[`Button > should render loading button 1`] = `
         />
       </svg>
     </div>
-  </button>
-</div>
-`;
-
-exports[`primary button > should match snapshot 1`] = `
-<div>
-  <button
-    class="rounded bg-blue-500 text-white px-4 py-3"
-  >
-    Primary
   </button>
 </div>
 `;
