@@ -2,7 +2,12 @@
 export * from './editor/editor';
 
 /** Forms */
-export * from './button/button';
+export * from './forms/button/button';
 
 /** Data Display */
-export * from './typography/typography';
+export * from './data-display/typography/typography';
+export * from './data-display/icon/icon';
+export * from './data-display/icon/icons';
+
+/** Feedback */
+export * from './feedback/loading-indicator/loading-indicator';
