@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import type { PolymorphicComponentProp } from '../utils/polymorphic-types';
+import type { PolymorphicComponentProp } from '~/ui/utils/polymorphic-types';
 
 type Color =
   | 'primary-300'
