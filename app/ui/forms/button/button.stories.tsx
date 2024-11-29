@@ -29,7 +29,7 @@ const meta: Meta<typeof Button> = {
     color: {
       control: {
         type: 'select',
-        options: ['grey', 'primary'],
+        options: ['grey'],
       },
     },
   },
