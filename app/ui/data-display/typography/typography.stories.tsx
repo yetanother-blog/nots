@@ -51,10 +51,10 @@ export const Variants: Story = {
 export const Colors: Story = {
   render: () => (
     <>
-      <Typography textColor="primary-500" variant="title">
+      <Typography textColor="primary-700" variant="title">
         Title
       </Typography>
-      <Typography textColor="primary-400" variant="heading1">
+      <Typography textColor="primary-500" variant="heading1">
         Heading 1
       </Typography>
       <Typography textColor="primary-300" variant="heading2">
