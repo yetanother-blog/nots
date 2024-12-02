@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormWrapper > should render form wrapper 1`] = `
+<div>
+  <div
+    class="flex flex-col gap-2"
+  >
+    FormWrapper
+  </div>
+</div>
+`;
+
+exports[`FormWrapper > should render form wrapper with error 1`] = `
+<div>
+  <div
+    class="flex flex-col gap-2"
+  >
+    FormWrapper
+    <p
+      class="antialiased font-sans text-xs font-normal text-nots-danger-500"
+    >
+      Helper text
+    </p>
+  </div>
+</div>
+`;
+
+exports[`FormWrapper > should render form wrapper with helper text 1`] = `
+<div>
+  <div
+    class="flex flex-col gap-2"
+  >
+    FormWrapper
+    <p
+      class="antialiased font-sans text-xs font-normal text-nots-grey-600"
+    >
+      Helper text
+    </p>
+  </div>
+</div>
+`;
+
+exports[`FormWrapper > should render with custom class name 1`] = `
+<div>
+  <div
+    class="flex flex-col gap-2 custom-class-name"
+  >
+    FormWrapper
+  </div>
+</div>
+`;

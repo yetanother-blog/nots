@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormFieldStyle > should render basic text input with disabled style 🫣 1`] = `
+<div>
+  <span
+    class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 pointer-events-none bg-ws-grey-50 block h-11"
+  >
+    <input
+      class="h-full w-full bg-transparent px-3 text-sm font-light text-ws-grey-900  placeholder-ws-grey-400  outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+      id="name"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`FormFieldStyle > should render basic text input with error style 🚨 1`] = `
+<div>
+  <span
+    class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-danger-500  ring-nots-danger-300 focus-within:border-nots-danger-500  hover:border-nots-danger-500 block h-11"
+  >
+    <input
+      class="h-full w-full bg-transparent px-3 text-sm font-light text-ws-grey-900  placeholder-ws-grey-400  outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+      id="name"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`FormFieldStyle > should render basic text input with style 😎 1`] = `
+<div>
+  <span
+    class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 block h-11"
+  >
+    <input
+      class="h-full w-full bg-transparent px-3 text-sm font-light text-ws-grey-900  placeholder-ws-grey-400  outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+      id="name"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`FormFieldStyle > should render form field style as textarea w/ disabled style 🫣 1`] = `
+<div>
+  <textarea
+    class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 pointer-events-none bg-ws-grey-50 block h-64 w-full bg-transparent p-3 text-sm  font-light text-ws-grey-900 placeholder-ws-grey-400 outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+    disabled=""
+  />
+</div>
+`;
+
+exports[`FormFieldStyle > should render form field style as textarea 🦹‍♀️ 1`] = `
+<div>
+  <textarea
+    class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 block h-64 w-full bg-transparent p-3 text-sm  font-light text-ws-grey-900 placeholder-ws-grey-400 outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+  />
+</div>
+`;
