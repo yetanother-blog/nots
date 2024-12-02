@@ -3,8 +3,11 @@ import type { PolymorphicComponentProp } from '~/ui/utils/polymorphic-types';
 
 type Color =
   | 'primary-300'
-  | 'primary-400'
   | 'primary-500'
+  | 'primary-700'
+  | 'danger-300'
+  | 'danger-500'
+  | 'danger-700'
   | 'grey-100'
   | 'grey-200'
   | 'grey-300'
@@ -66,8 +69,11 @@ export const Typography = <C extends React.ElementType = 'p'>({
 
   const textColorClasses = clsx([
     textColor === 'primary-300' && `text-nots-primary-300`,
-    textColor === 'primary-400' && `text-nots-primary-400`,
     textColor === 'primary-500' && `text-nots-primary-500`,
+    textColor === 'primary-700' && `text-nots-primary-700`,
+    textColor === 'danger-300' && `text-nots-danger-300`,
+    textColor === 'danger-500' && `text-nots-danger-500`,
+    textColor === 'danger-700' && `text-nots-danger-700`,
     textColor === 'grey-100' && `text-nots-grey-100`,
     textColor === 'grey-200' && `text-nots-grey-200`,
     textColor === 'grey-300' && `text-nots-grey-300`,

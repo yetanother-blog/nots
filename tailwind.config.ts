@@ -7,8 +7,13 @@ export default {
       colors: {
         'nots-primary': {
           300: '#C2D2FC',
-          400: '#398BF6',
-          500: '#0839B7',
+          500: '#398BF6',
+          700: '#0839B7',
+        },
+        'nots-danger': {
+          300: '#FECCCC',
+          500: '#EF4444',
+          700: '#9E1C1C',
         },
         'nots-grey': {
           50: '#F8F8F8',
