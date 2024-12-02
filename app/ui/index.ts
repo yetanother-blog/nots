@@ -1,5 +1,5 @@
 /** Editor */
-export * from './editor/editor';
+export * from './editor/editor/editor';
 
 /** Forms */
 export * from './forms/button/button';
