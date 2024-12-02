@@ -17,7 +17,7 @@ exports[`FormWrapper > should render form wrapper with error 1`] = `
   >
     FormWrapper
     <p
-      class="antialiased text-xs font-normal text-ws-danger-500 font-basier-circle"
+      class="antialiased font-sans text-xs font-normal text-nots-danger-500"
     >
       Helper text
     </p>
@@ -32,7 +32,7 @@ exports[`FormWrapper > should render form wrapper with helper text 1`] = `
   >
     FormWrapper
     <p
-      class="antialiased text-xs font-normal text-ws-grey-600 font-basier-circle"
+      class="antialiased font-sans text-xs font-normal text-nots-grey-600"
     >
       Helper text
     </p>

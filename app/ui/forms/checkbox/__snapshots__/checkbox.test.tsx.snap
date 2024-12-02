@@ -9,19 +9,19 @@ exports[`Checkbox > should render checkbox w/ error 1`] = `
       class="flex gap-2"
     >
       <input
-        class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-danger-500  ring-ws-danger-300 focus-within:border-ws-danger-500  hover:border-ws-danger-500 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+        class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-danger-500  ring-nots-danger-300 focus-within:border-nots-danger-500  hover:border-nots-danger-500 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
         id="error"
         type="checkbox"
       />
       <label
-        class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
+        class="antialiased font-sans text-base font-normal text-nots-grey-800 dark:text-white cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
         for="error"
       >
         The error text field
       </label>
     </div>
     <p
-      class="antialiased text-xs font-normal text-ws-danger-500 font-basier-circle"
+      class="antialiased font-sans text-xs font-normal text-nots-danger-500"
     >
       This is an error text field
     </p>
@@ -38,19 +38,19 @@ exports[`Checkbox > should render checkbox w/ helper text 1`] = `
       class="flex gap-2"
     >
       <input
-        class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+        class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
         id="helper"
         type="checkbox"
       />
       <label
-        class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
+        class="antialiased font-sans text-base font-normal text-nots-grey-800 dark:text-white cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
         for="helper"
       >
         The helper text
       </label>
     </div>
     <p
-      class="antialiased text-xs font-normal text-ws-grey-600 font-basier-circle"
+      class="antialiased font-sans text-xs font-normal text-nots-grey-600"
     >
       This is a helper text
     </p>
@@ -67,14 +67,14 @@ exports[`Checkbox > should render disabled and ticked checkbox 1`] = `
       class="flex gap-2"
     >
       <input
-        class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 pointer-events-none bg-ws-grey-50 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+        class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 pointer-events-none bg-ws-grey-50 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
         disabled=""
         id="disabled"
         type="checkbox"
         value="This is a disabled text field"
       />
       <label
-        class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
+        class="antialiased font-sans text-base font-normal text-nots-grey-800 dark:text-white cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
         for="disabled"
       >
         The disabled text field
@@ -93,14 +93,14 @@ exports[`Checkbox > should render disabled and unticked checkbox 1`] = `
       class="flex gap-2"
     >
       <input
-        class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 pointer-events-none bg-ws-grey-50 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+        class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 pointer-events-none bg-ws-grey-50 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
         disabled=""
         id="disabled"
         type="checkbox"
         value="This is a disabled text field"
       />
       <label
-        class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
+        class="antialiased font-sans text-base font-normal text-nots-grey-800 dark:text-white cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
         for="disabled"
       >
         The disabled text field
@@ -119,12 +119,12 @@ exports[`Checkbox > should render ticked checkbox 1`] = `
       class="flex gap-2"
     >
       <input
-        class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+        class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
         id="default"
         type="checkbox"
       />
       <label
-        class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
+        class="antialiased font-sans text-base font-normal text-nots-grey-800 dark:text-white cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
         for="default"
       >
         The default
@@ -143,12 +143,12 @@ exports[`Checkbox > should render unticked checkbox 1`] = `
       class="flex gap-2"
     >
       <input
-        class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+        class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
         id="default"
         type="checkbox"
       />
       <label
-        class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
+        class="antialiased font-sans text-base font-normal text-nots-grey-800 dark:text-white cursor-pointer pt-[4px] peer-disabled:pointer-events-none"
         for="default"
       >
         The default
@@ -160,7 +160,7 @@ exports[`Checkbox > should render unticked checkbox 1`] = `
 
 exports[`Checkbox > should wire up ref correctly 1`] = `
 <input
-  class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-ws-primary-500 indeterminate:bg-ws-primary-500 indeterminate:after:block indeterminate:hover:border-ws-primary-700 indeterminate:hover:bg-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] checked:after:bg-checkmark checked:border-ws-primary-500 checked:bg-ws-primary-500 checked:after:block checked:hover:border-ws-primary-700 checked:hover:bg-ws-primary-700 checked:after:h-[13px] checked:after:w-[13px] disabled:border-ws-grey-100 disabled:bg-ws-grey-50 disabled:checked:border-ws-primary-300 disabled:checked:bg-ws-primary-300"
+  class="border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-nots-grey-300  ring-nots-grey-100 focus-within:border-nots-grey-500  hover:border-nots-grey-500 dark:border-nots-grey-600  dark:ring-nots-grey-600 dark:focus-within:border-nots-grey-700  dark:hover:border-nots-grey-700 peer grid h-7 w-7 shrink-0 appearance-none cursor-pointer place-content-center after:hidden after:content-[''] indeterminate:after:bg-indeterminate indeterminate:border-nots-grey-800 indeterminate:bg-nots-grey-800 indeterminate:after:block indeterminate:hover:border-nots-primary-700 indeterminate:hover:nots-ws-primary-700 indeterminate:after:h-[24px] indeterminate:after:w-[24px] dark:indeterminate:after:invert dark:indeterminate:border-nots-grey-50 dark:indeterminate:bg-white dark:indeterminate:hover:border-nots-grey-100 dark:indeterminate:hover:bg-nots-grey-100 checked:after:bg-checkmark checked:border-nots-grey-800 checked:bg-nots-grey-800 checked:after:block checked:hover:border-nots-grey-600 checked:hover:bg-nots-grey-600 checked:after:h-[13px] checked:after:w-[13px] dark:checked:border-nots-grey-50 dark:checked:bg-white dark:checked:after:invert dark:checked:hover:border-nots-grey-100 dark:checked:hover:bg-nots-grey-100 disabled:border-nots-grey-100 disabled:bg-nots-grey-50 disabled:checked:border-nots-grey-700 disabled:checked:bg-nots-grey-700 dark:disabled:border-nots-grey-700 dark:disabled:bg-nots-grey-700 dark:disabled:checked:border-nots-grey-700 dark:disabled:checked:bg-nots-grey-200 dark:disabled:checked:after:opacity-30"
   id="default"
   type="checkbox"
 />
