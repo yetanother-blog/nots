@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormFieldStyle > should render basic text input with disabled style 🫣 1`] = `
+<div>
+  <span
+    class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 pointer-events-none bg-ws-grey-50 block h-11"
+  >
+    <input
+      class="h-full w-full bg-transparent px-3 text-sm font-light text-ws-grey-900  placeholder-ws-grey-400  outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+      id="name"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`FormFieldStyle > should render basic text input with error style 🚨 1`] = `
+<div>
+  <span
+    class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-danger-500  ring-ws-danger-300 focus-within:border-ws-danger-500  hover:border-ws-danger-500 block h-11"
+  >
+    <input
+      class="h-full w-full bg-transparent px-3 text-sm font-light text-ws-grey-900  placeholder-ws-grey-400  outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+      id="name"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`FormFieldStyle > should render basic text input with style 😎 1`] = `
+<div>
+  <span
+    class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 block h-11"
+  >
+    <input
+      class="h-full w-full bg-transparent px-3 text-sm font-light text-ws-grey-900  placeholder-ws-grey-400  outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+      id="name"
+      type="text"
+    />
+  </span>
+</div>
+`;
+
+exports[`FormFieldStyle > should render form field style as textarea w/ disabled style 🫣 1`] = `
+<div>
+  <textarea
+    class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 pointer-events-none bg-ws-grey-50 block h-64 w-full bg-transparent p-3 text-sm  font-light text-ws-grey-900 placeholder-ws-grey-400 outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+    disabled=""
+  />
+</div>
+`;
+
+exports[`FormFieldStyle > should render form field style as textarea 🦹‍♀️ 1`] = `
+<div>
+  <textarea
+    class="rounded-lg border transition-all focus-within:outline-none focus-within:ring-4 active:ring-4 border-ws-grey-300  ring-ws-primary-300 focus-within:border-ws-primary-500  hover:border-ws-primary-500 block h-64 w-full bg-transparent p-3 text-sm  font-light text-ws-grey-900 placeholder-ws-grey-400 outline-none read-only:text-ws-grey-600 disabled:text-ws-grey-400"
+  />
+</div>
+`;
