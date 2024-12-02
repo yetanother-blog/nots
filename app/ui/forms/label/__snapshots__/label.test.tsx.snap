@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Label > should render label 1`] = `
+<div>
+  <label
+    class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle"
+    for="test"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`Label > should render with custom class 1`] = `
+<div>
+  <label
+    class="antialiased text-sm text-ws-grey-600 font-semibold font-basier-circle custom-class"
+    for="test"
+  >
+    Label
+  </label>
+</div>
+`;
