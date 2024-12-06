@@ -39,9 +39,6 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const GreyFilled: Story = {
-  args: {
-    color: 'grey',
-  },
   render: () => (
     <div className="flex flex-grow-0 flex-wrap gap-4">
       <Button onClick={() => console.log('clicked')}>Primary Button</Button>
@@ -82,6 +79,78 @@ export const GreyFilled: Story = {
         icon="paragraph"
       />
       <Button
+        disabled={true}
+        onClick={() => console.log('clicked')}
+        icon="paragraph"
+      />
+    </div>
+  ),
+};
+
+export const GreySubtle: Story = {
+  render: () => (
+    <div className="flex flex-grow-0 flex-wrap gap-4">
+      <Button variant="subtle" onClick={() => console.log('clicked')}>
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        isLoading={true}
+        onClick={() => console.log('clicked')}
+      >
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        disabled={true}
+        onClick={() => console.log('clicked')}
+      >
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        onClick={() => console.log('clicked')}
+        icon="caretDown"
+        iconPosition="start"
+      >
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        onClick={() => console.log('clicked')}
+        icon="caretDown"
+      >
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        isLoading={true}
+        onClick={() => console.log('clicked')}
+        icon="caretDown"
+      >
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        disabled={true}
+        onClick={() => console.log('clicked')}
+        icon="paragraph"
+      >
+        Primary Button
+      </Button>
+      <Button
+        variant="subtle"
+        onClick={() => console.log('clicked')}
+        icon="paragraph"
+      />
+      <Button
+        variant="subtle"
+        isLoading={true}
+        onClick={() => console.log('clicked')}
+        icon="paragraph"
+      />
+      <Button
+        variant="subtle"
         disabled={true}
         onClick={() => console.log('clicked')}
         icon="paragraph"
