@@ -5,7 +5,7 @@ import type { IconName } from '~/ui';
 import { LoadingIndicator, Icon } from '~/ui';
 import type { PolymorphicComponentPropWithRef } from '~/ui/utils/polymorphic-types';
 
-type Variant = 'filled';
+type Variant = 'filled' | 'subtle';
 export type ButtonColor = 'grey';
 type Size = 'regular';
 
@@ -50,19 +50,32 @@ export const Button = forwardRef(
      */
     const filledClasses = clsx([
       'text-white dark:text-nots-grey-800',
-      isLoading &&
-        'drop-shadow-none hover:drop-shadow-none pointer-events-none',
+      isLoading && 'pointer-events-none',
     ]);
 
-    const primaryFilledClasses = clsx([
+    const greyFilledClasses = clsx([
       filledClasses,
       'disabled:bg-nots-grey-200 dark:disabled:bg-white dark:disabled:text-nots-grey-200 focus:outline-none',
-      'bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-300',
-      isLoading && 'hover:bg-ws-primary-500',
+      'bg-nots-grey-800 dark:bg-white hover:bg-nots-grey-600 dark:hover:bg-nots-grey-100 focus:outline-none focus:ring-2 focus:ring-nots-grey-200',
+    ]);
+
+    /*
+     * Subtle Varaiants
+     */
+    const subtleClasses = clsx([
+      'text-nots-grey-800 dark:text-white',
+      isLoading && 'pointer-events-none',
+    ]);
+
+    const greySubtleClasses = clsx([
+      subtleClasses,
+      'disabled:text-nots-grey-200 dark:disabled:text-nots-grey-600  focus:outline-none',
+      ' hover:text-nots-grey-600 dark:hover:text-nots-grey-300 focus:outline-none focus:ring-2 focus:ring-nots-grey-200',
     ]);
 
     const colorClasses = clsx([
-      variant === 'filled' && color === 'grey' && primaryFilledClasses,
+      variant === 'filled' && color === 'grey' && greyFilledClasses,
+      variant === 'subtle' && color === 'grey' && greySubtleClasses,
     ]);
 
     const baseShapeClasses = clsx([size === 'regular' && `px-3 py-[6px]`]);
