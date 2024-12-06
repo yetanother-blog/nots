@@ -1,5 +1,9 @@
 /** Editor */
 export * from './editor/editor/editor';
+export * from './editor/toolbar/toolbar-root';
+export * from './editor/toolbar/toolbar-toggle-group';
+export * from './editor/toolbar/toolbar-toggle-item';
+export * from './editor/toolbar/toolbar-separator';
 
 /** Forms */
 export * from './forms/button/button';
