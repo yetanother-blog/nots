@@ -4,7 +4,7 @@ exports[`Toolbar > should render toolbar 1`] = `
 <div>
   <div
     aria-orientation="horizontal"
-    class="inline-flex flex-row gap-3 p-2 border border-nots-grey-200"
+    class="inline-flex flex-row gap-3 p-2 border border-nots-grey-200 dark:border-nots-grey-600 dark:bg-nots-grey-700"
     data-orientation="horizontal"
     dir="ltr"
     role="toolbar"
